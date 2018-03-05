@@ -56,7 +56,7 @@ Este nuevo sistema busca agilizar los trámites tanto en la recogida, como el en
 \subsection{Descripción de implicados y usuarios finales}
 
 \subsubsection{Entorno de usuario}
-Los usuarios finales del sistema a desarrollar serán dos: el cliente, que contratará un determinado producto y el administrador de sistema, que se encargará de configurar el catálogo de servicios disponibles. El primero de ellos no tiene por qué tener un amplio conocimiento informático, pero el adminsistrador si habrá de tener nociones de usuario medio.
+Los usuarios finales del sistema a desarrollar serán dos: el cliente, que contratará un determinado producto y el administrador de sistema, que se encargará de configurar el catálogo de servicios disponibles. El primero de ellos no tiene por qué tener un amplio conocimiento informático, pero el administrador si habrá de tener nociones de usuario medio.
 \subsubsection{Resumen de implicados}
 
 \begin{table}[H]
@@ -87,7 +87,7 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 \begin{center}
 \begin{tabular}{|l|m{10cm}|}
 \hline
-\textbf{Descripción} & Potencial socio \\
+\textbf{Descripción} & Emisor (potencial socio) \\
 \hline
 \textbf{Tipo} & Utiliza el sistema para contratar un envío y acordar la recogida del paquete. \\
 \hline
@@ -117,7 +117,7 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 \begin{center}
 \begin{tabular}{|l|m{10cm}|}
 \hline
-\textbf{Descripción} & Potencial cliente \\
+\textbf{Descripción} & Destinatario (potencial cliente) \\
 \hline
 \textbf{Tipo} & No utiliza el sistema de forma directa, sino que juega un papel fundamental en el desarrollo de un envío. \\
 \hline
@@ -176,7 +176,7 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 \begin{center}
 \begin{tabular}{|l|p{10cm}|}
 \hline
-\textbf{Descripción} & Empleado \\
+\textbf{Descripción} & Empleado de almacén \\
 \hline
 \textbf{Grado de responsabilidad} & Media. \\
 \hline
@@ -204,7 +204,7 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 \begin{center}
 \begin{tabular}{|l|m{10cm}|}
 \hline
-\textbf{Descripción} & Empleado \\
+\textbf{Descripción} & Repartidor \\
 \hline
 \textbf{Grado de responsabilidad} & Media \\
 \hline
@@ -233,9 +233,9 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{|l|p{10cm}|}
+\begin{tabular}{|l|m{10cm}|}
 \hline
-\textbf{Descripción} & Empleado \\
+\textbf{Descripción} & Encargado de oficina \\
 \hline
 \textbf{Grado de responsabilidad} & Media. \\
 \hline
@@ -260,6 +260,44 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 \caption{Encargado de oficina}
 \end{center}
 \end{table}
+
+\subsubsection{Necesidades principales de los implicados}
+\begin{table}[H]
+	\begin{center}
+	\begin{tabular}{|l|l|m{4.5cm}|m{2cm}|m{2.5cm}|}
+			\hline
+			\textbf{Necesidad} & \textbf{Prioridad} & \textbf{Problema} & \textbf{Solución actual} & \textbf{Solución propuesta }\\
+			\hline
+			Contratación & Alta & ¿Cómo puedo enviar un paquete? & Ir personalmente a una oficina. & Ofrecer una aplicación web que permita la contratación de los distintos servicios. \\
+			\hline
+			Consulta & Alta & ¿Cómo puedo saber el estado del servicio contratado? & Ponerse en contacto con la oficina personalmente o por teléfono. & Añadir esta característica a la aplicación web. \\
+			\hline
+			Consulta & Media & ¿Cómo puedo consultar los servicios que he contratado? & Guardar los recibos de cada uno. & Añadir un portal de consulta a la aplicación. \\
+			\hline
+			Gestión & Alta & ¿Cómo puedo modificar parámetros de un servicio en curso? & Ponerse en contacto con una oficina. & Añadir esta característica a la aplicación web. \\
+			\hline
+	\end{tabular}
+	\caption{Necesidades por parte de los clientes}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|m{4.5cm}|m{2cm}|m{2.5cm}|}
+\hline
+\textbf{Necesidad} & \textbf{Prioridad} & \textbf{Problema} & \textbf{Solución actual} & \textbf{Solución propuesta }\\
+\hline
+Organización & Alta & ¿Cómo puedo planificar las determinadas rutas que se realizarán en una jornada? & Planearlas a mano. & Diseñar un algoritmo que obtenga la ruta más óptima. \\
+\hline
+Consulta & Media & ¿Cómo puedo consultar datos relativos a cada oficina/almacén? (número de vehículos, capacidad máxima, etc.) & Llamando por teléfono a cada oficina. & Informatizar la tarea para poder consultar l \\
+\hline
+Contacto & Media & ¿Cómo puedo contactar con otras oficinas o almacenes? & Por teléfono. & Añadir un chat a la aplicación. \\
+\hline
+\end{tabular}
+\caption{Necesidades por parte de los empleados}
+\end{center}
+\end{table}
+
 
 \subsection{Requisitos funcionales}
 Requisitos más importantes a nivel funcional que debe incluir el sistema.
