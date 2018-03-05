@@ -6,34 +6,38 @@
 \usepackage{array}
 \usepackage{enumerate}
 \usepackage{multirow}
+\usepackage{titling}
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{blindtext}
 \usepackage{enumitem}
-\usepackage[a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
-
-
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Sistema de gestión de transportes \\  \small{para Envíamelo S.A.}}
 \date{\today}
 \author{Carlos Sánchez Páez \\ José Miguel Pelegrina Pelegrina \\ José Baena Cobos}
-
+\setlength{\droptitle}{10em}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+	
 \maketitle
-
+\thispagestyle{empty}
 \newpage
 \tableofcontents
+\listoftables
+\thispagestyle{empty}
 \newpage
+\setcounter{page}{1}
 
 \section{Dominio del problema y descripción general del sistema}
 Este proyecto tiene como objetivo desarrollar un software para sustituir al actual sistema de gestión de la empresa logística Envíamelo S.A. Ésta dispone de una flota de furgonetas para la distribución de paquetes por todo el territorio español. En cada capital de provincia hay una oficina y un almacén para la carga y descarga de los paquetes que serán transportados de un almacén de origen a otro de destino. Además, cada almacén dispone de un conjunto de pequeñas furgonetas que se encargan de la recogida de paquetes de los usuarios que quieren enviar un paquete, así como de su reparto al destinatario final. \\
-Este nuevo sistema busca agilizar los trámites tanto en la recogida, como el envío y recepción del paquete; a la vez que facilitar al cliente la gestión de sus pedidos. Con esto se pretende aumentar el margen de beneficios de la empresa.
+Este nuevo sistema busca agilizar los trámites tanto en la recogida, como el envío y recepción del paquete; a la vez que facilitar a la empresa la gestión de sus recursos. Con ésto se pretende aumentar el margen de beneficios de la empresa.
 
 \subsection{Objetivos}
 
 \subsubsection{Objetivos orientados al cliente}
 
 \begin{enumerate}[label=\textbf{OBJ-\arabic*}]
-	\item Facilitar al cliente la consulta y gestión de los servicios contratados de forma rápida, fácil y eficiente.
 	\item Permitir que el usuario pueda obtener información relativa al servicio contratado en todo momento.
 	\item Permitir que el usuario concrete la franja temporal más adecuada para el envío y la recepción del producto.
 	\item Permitir que el usuario pueda gestionar el procedimiento a seguir en caso de ausencia del destinatario.
@@ -78,6 +82,7 @@ Repartidor & Representa un empleado & Usuario producto & Hace llegar el paquete 
 Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los empleados de cada almacén.  \\
 \hline
 \end{tabular}
+\caption{Resumen de implicados}
 \end{center}
 \end{table}
 
@@ -85,14 +90,14 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 %%%%%%%%%%%%%%%%%%%%%EMISOR%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{|l|m{10cm}|}
+\begin{tabular}{|l|m{11cm}|}
 \hline
 \textbf{Descripción} & Emisor (potencial socio) \\
 \hline
 \textbf{Tipo} & Utiliza el sistema para contratar un envío y acordar la recogida del paquete. \\
 \hline
 \textbf{Responsabilidades} & 
-\begin{minipage}{5in}
+\begin{minipage}{11cm}
     \vskip 1pt
     \begin{enumerate}
    		\item Contratar servicios.
@@ -115,14 +120,14 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{|l|m{10cm}|}
+\begin{tabular}{|l|m{11cm}|}
 \hline
 \textbf{Descripción} & Destinatario (potencial cliente) \\
 \hline
 \textbf{Tipo} & No utiliza el sistema de forma directa, sino que juega un papel fundamental en el desarrollo de un envío. \\
 \hline
 \textbf{Responsabilidades} & 
-\begin{minipage}{5in}
+\begin{minipage}{11cm}
     \vskip 1pt
     \begin{enumerate}
    \item Recibir envíos.
@@ -144,14 +149,14 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{|l|m{10cm}|}
+\begin{tabular}{|l|m{11cm}|}
 \hline
 \textbf{Descripción} & Socio \\
 \hline
 \textbf{Tipo} & Utiliza el sistema de forma frecuente para contratar envíos y acordar su recogida. \\
 \hline
 \textbf{Responsabilidades} & 
-\begin{minipage}{5in}
+\begin{minipage}{11cm}
     \vskip 1pt
     \begin{enumerate}
    		\item Contratar servicios.
@@ -174,14 +179,14 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{|l|p{10cm}|}
+\begin{tabular}{|l|m{9.5cm}|}
 \hline
 \textbf{Descripción} & Empleado de almacén \\
 \hline
 \textbf{Grado de responsabilidad} & Media. \\
 \hline
 \textbf{Responsabilidades} & 
-\begin{minipage}{10cm}
+\begin{minipage}{9.5cm}
     \vskip 1pt
     \begin{enumerate}
    		\item Cargar y descargar los paquetes de los correspondientes vehículos.
@@ -202,14 +207,14 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 %%%%%%%%%%%%%%%%%%%%%REPARTIDOR%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{|l|m{10cm}|}
+\begin{tabular}{|l|m{9.5cm}|}
 \hline
 \textbf{Descripción} & Repartidor \\
 \hline
 \textbf{Grado de responsabilidad} & Media \\
 \hline
 \textbf{Responsabilidades} & 
-\begin{minipage}{10cm}
+\begin{minipage}{9.5cm}
     \vskip 1pt
     \begin{enumerate}
    		\item Entregar los paquetes a los destinatarios.
@@ -233,14 +238,14 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{|l|m{10cm}|}
+\begin{tabular}{|l|m{9.5cm}|}
 \hline
 \textbf{Descripción} & Encargado de oficina \\
 \hline
 \textbf{Grado de responsabilidad} & Media. \\
 \hline
 \textbf{Responsabilidades} & 
-\begin{minipage}{10cm}
+\begin{minipage}{9.5cm}
     \vskip 1pt
     \begin{enumerate}
    		\item Ayudar a los clientes en la elección del mejor servicio acorde a sus necesidades.
@@ -264,7 +269,7 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 \subsubsection{Necesidades principales de los implicados}
 \begin{table}[H]
 	\begin{center}
-	\begin{tabular}{|l|l|m{4.5cm}|m{2cm}|m{2.5cm}|}
+	\begin{tabular}{|l|l|m{3cm}|m{2.75cm}|m{3.25cm}|}
 			\hline
 			\textbf{Necesidad} & \textbf{Prioridad} & \textbf{Problema} & \textbf{Solución actual} & \textbf{Solución propuesta }\\
 			\hline
@@ -283,7 +288,7 @@ Encargado de oficina & Representa un empleado & Usuario producto & Dirige a los 
 
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{|l|l|m{4.5cm}|m{2cm}|m{2.5cm}|}
+	\begin{tabular}{|l|l|m{3cm}|m{2.75cm}|m{3.25cm}|}
 \hline
 \textbf{Necesidad} & \textbf{Prioridad} & \textbf{Problema} & \textbf{Solución actual} & \textbf{Solución propuesta }\\
 \hline
@@ -444,10 +449,5 @@ Información que ha de almacenarse en el sistema.
 			\item Volumen de pedidos.
 		\end{enumerate}	
 \end{enumerate}
-
-\section{Glosario}
-
-
-
 
 \end{document}
