@@ -1,0 +1,170 @@
+\documentclass[12pt,spanish]{article}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{array}
+\graphicspath{ {../../LaTeX/img/}}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\makeindex
+
+\begin{document}
+\begin{titlepage}
+
+\newlength{\centeroffset}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+\thispagestyle{empty}
+
+\noindent\hspace*{\centeroffset}\begin{minipage}{\textwidth}
+
+\centering
+\includegraphics[width=0.9\textwidth]{logo_ugr.jpg}\\[1.4cm]
+
+\textsc{ \Large Fundamentos de Ingeniería del Software\\[0.2cm]}
+\textsc{GRADO EN INGENIERÍA INFORMÁTICA}\\[1cm]
+
+{\Huge\bfseries Relación 2.1\\
+}
+\noindent\rule[-1ex]{\textwidth}{3pt}\\[3.5ex]
+{\large\bfseries Ejercicio 7}
+\end{minipage}
+
+\vspace{2.5cm}
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+\centering
+
+\textbf{Autor}\\ {Carlos Sánchez Páez}\\[2.5ex]
+\includegraphics[width=0.3\textwidth]{etsiit_logo.png}\\[0.1cm]
+\vspace{1.5cm}
+\includegraphics[width=0.2\textwidth]{lsi.png}\\[0.1cm]
+\vspace{1cm}
+\textsc{Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación}\\
+\vspace{1cm}
+\textsc{Curso 2017-2018}
+\end{minipage}
+\end{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%Comienzo del documento%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\thispagestyle{empty}
+\listoftables
+\newpage
+\setcounter{page}{1}
+\section{Enunciado}
+{\large\textbf{Ejercicio 7.} Realice un análisis y descripción de implicados para una aplicación de gestión de una biblioteca.}
+\section{Resolución}
+\subsection{Entorno de usuario}
+ El usuario directo de la aplicación será el bibliotecario, que se encargará de actualizar la información del sistema y realizar los servicios comunes (préstamo, devolución, alta de socios, etc.). Debe conocer bien el sistema informático y la organización de los distintos ejemplares de los que dispone la biblioteca para poder atender correctamente al cliente.
+\subsection{Resumen de implicados} 
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|p{4cm}|p{2cm}|p{4cm}|}
+\hline
+\textbf{Nombre} & \textbf{Descripción} & \textbf{Tipo} & \textbf{Responsabilidad} \\
+\hline
+Bibliotecario & Trabajador de la biblioteca & Usuario producto & Atender las peticiones de los clientes \\
+\hline
+Socio & Afiliado a la biblioteca & Usuario sistema & Realizar consultas y gestiones \\
+\hline
+Cliente & Usuario no afiliado & Usuario sistema & Realizar consultas o afiliarse a la biblioteca \\
+\hline
+\end{tabular}
+\caption{Resumen de los implicados}
+\end{center}
+\end{table}
+\subsection{Perfiles de los implicados}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|m{6cm}|m{6cm}|}
+\hline
+\textbf{Descripción} & Bibliotecario (empleado) \\
+\hline
+\textbf{Grado de responsabilidad} & Alto\\
+\hline
+\textbf{Responsabilidades} &
+\begin{minipage}{6cm}
+ \vskip 1pt
+\begin{enumerate}
+	\item Realizar préstamos.
+	\item Tramitar devoluciones.
+	\item Gestionar datos de socios.
+	\begin{enumerate}
+		\item Dar de alta.
+		\item Dar de baja.
+		\item Modificar datos.
+	\end{enumerate}
+	\item Actualizar el sistema según los nuevos productos que entren al inventario.
+\end{enumerate}
+\vskip 1pt
+\end{minipage} \\
+\hline
+\textbf{Criterios de éxito} & Debe atender a los clientes de forma rápida, correcta y eficiente. \\
+\hline
+\end{tabular}
+\caption{Bibliotecario}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|m{6cm}|m{6cm}|}
+\hline
+\textbf{Descripción} & Socio \\
+\hline
+\textbf{Tipo} & No utiliza directamente el sistema, sino que solicita al bibliotecario que realice las gestiones pertinentes. \\
+\hline
+\textbf{Responsabilidades} & 
+\begin{minipage}{6cm}
+    \vskip 1pt
+    \begin{enumerate}
+   		\item Solicitar un préstamo.
+   		\item Devolver un producto.
+     	\item Consultar información sobre un producto.
+     	\item Actualizar sus datos.
+   \end{enumerate}
+   \vskip 1pt
+ \end{minipage}\\ 
+\hline
+\textbf{Criterios de éxito} & Que el sistema le permita realizar sus consultas y gestiones de forma fácil y eficiente.\\
+\hline
+\textbf{Implicación} & Utiliza el sistema de forma frecuente para solicitar préstamos y realizar su devolución. \\
+\hline
+\end{tabular}
+\caption{Socio}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|m{6cm}|m{6cm}|}
+\hline
+\textbf{Descripción} & Cliente (potencial socio) \\
+\hline
+\textbf{Tipo} & No utiliza directamente el sistema, sino que solicita al bibliotecario que realice las gestiones pertinentes. \\
+\hline
+\textbf{Responsabilidades} & 
+\begin{minipage}{6cm}
+    \vskip 1pt
+    \begin{enumerate}
+   		\item Afiliarse a la biblioteca.
+   		\item Consultar si la biblioteca posee un determinado producto.
+   \end{enumerate}
+   \vskip 1pt
+ \end{minipage}\\ 
+\hline
+\textbf{Criterios de éxito} & Que el sistema le permita realizar sus consultas y gestiones de forma fácil y eficiente.\\
+\hline
+\textbf{Implicación} & Utilizará el sistema para convertirse en socio. \\
+\hline
+\end{tabular}
+\caption{Cliente}
+\end{center}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%Fin del documento%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
