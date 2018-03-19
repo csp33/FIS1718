@@ -1,0 +1,10 @@
+\select@language {spanish}
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Diagramas de casos de uso}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Identificaci\IeC {\'o}n de actores}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Identificaci\IeC {\'o}n de casos de uso}{1}{subsection.1.2}
+\contentsline {section}{\numberline {2}Diagrama de paquetes}{5}{section.2}
+\contentsline {section}{\numberline {3}Descripci\IeC {\'o}n de casos de uso a nivel general}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Jos\IeC {\'e} Miguel Pelegrina Pelegrina}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Jos\IeC {\'e} Baena Cobos}{6}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Carlos S\IeC {\'a}nchez P\IeC {\'a}ez}{7}{subsection.3.3}

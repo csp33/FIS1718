@@ -1,0 +1,190 @@
+\subsection{Carlos Sánchez Páez}
+
+%%%%%%%%%%%ENVIAR PAQUETE%%%%%%%%%%%%%%%%
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Enviar paquete} \vline &  \cellcolor{gray!40}CU1 \\
+\hline
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{Socio o emisor} \\
+\hline
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{Esencial} \\
+\hline
+\textbf{Referencias} &\multicolumn{3}{m{4cm}|}{-} & \multicolumn{2}{m{4cm}|}{-} \\
+\hline
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Autor} & Carlos Sánchez Páez & \textbf{Fecha} & 19/03/18 & \textbf{Versión} & 3.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Propósito} \\
+\hline
+Que el usuario solicite la recogida (o bien lleve a una oficina) el paquete que quiere enviar. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Resumen} \\
+\hline
+El usuario entrega el paquete a la empresa para que ésta lo lleve a su destinatario. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{4pt}|m{7.33cm}|m{4pt}|m{7.33cm}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Curso normal}} \\
+\hline
+\textbf{1} & El cliente elige la tarifa que más le conviene. & \textbf{2} & Si es un socio, se identifica como tal en el sistema. \\
+\hline
+\textbf{3} & El sistema solicita la introducción de los datos necesarios (destinatario, peso del bulto, medidas, franja horaria de entrega, etc.) & \textbf{4} & El cliente acuerda la recogida del bulto o bien lo lleva él mismo a la oficina correspondiente. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{10pt}|m{7.15cm}|m{10pt}|m{7.15cm}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Cursos alternos}} \\
+\hline
+\textbf{2a} & Si el cliente desea hacerse socio, el sistema le ofrece acceso al procedimiento de \emph{alta}. & \textbf{3a} & Si el cliente no posee los datos físicos del bulto, se le ofrece la posibilidad de que su medición y pesaje se realice en el momento de la recogida.  \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{3.72cm}|m{3.72cm}|m{3.72cm}|m{3.72cm}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Otros datos}} \\
+\hline
+\textbf{Frecuencia esperada} & 20 veces al día & \textbf{Rendimiento} & - \\
+\hline
+\textbf{Importancia} & Alta & \textbf{Urgencia} & Inmediatamente \\
+\hline
+\textbf{Estado} & En construcción & \textbf{Estabilidad} & Alta \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Comentarios} \\
+\hline
+La frecuencia esperada dependerá de la fecha, siendo más alta en fechas críticas como navidad. \\
+\hline
+\end{tabular}
+
+\caption{Enviar un paquete}
+
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%DIRIGIR EMPLEADOS%%%%%%%%%%%%%%%
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Dirigir a los empleados} \vline &  \cellcolor{gray!40}CU4 \\
+\hline
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{\begin{enumerate}
+\item Encargado de oficina.
+\item Encargado de almacén.
+\item Conductor.
+\end{enumerate}} \\
+\hline
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{Vital} \\
+\hline
+\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{CU3} \\
+\hline
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{Tiene que haber al menos un paquete que deba ser entregado.} \\
+\hline
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Autor} & Carlos Sánchez Páez & \textbf{Fecha} & 19/03/2018 & \textbf{Versión} & 2.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Propósito} \\
+\hline
+Asignar el trabajo correspondiente a cada conductor y mozo de almacén. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Resumen} \\
+\hline
+El encargado de oficina distribuye el trabajo que debe realizar cada conductor y cada mozo de almacén. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{4pt}|m{7.33cm}|m{4pt}|m{7.33cm}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Curso normal}} \\
+\hline
+\textbf{1} & El encargado de oficina solicita al sistema que realice un trazado de la ruta según el origen y el destino de los paquetes. & \textbf{2} & El sistema devuelve el trazado \\
+\hline
+\textbf{3} & El encargado de oficina asigna a los conductores un vehículo en concreto para que realice su función. & \textbf{4} & El encargado de oficina atribuye a los mozos de almacén el trabajo a realizar (categorización, carga/descarga, etc.) en cada franja horaria. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{10pt}|m{7.15cm}|m{10pt}|m{7.15cm}|}
+\hline
+\multicolumn{4}{|m{16.2cm}|}{\textbf{Cursos alternos}} \\
+\hline
+\multicolumn{4}{|m{16.2cm}|}{\textbf{-}} \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{3.72cm}|m{3.72cm}|m{3.72cm}|m{3.72cm}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Otros datos}} \\
+\hline
+\textbf{Frecuencia esperada} & Alta (a diario) & \textbf{Rendimiento} & - \\
+\hline
+\textbf{Importancia} & Extrema & \textbf{Urgencia} & Máxima \\
+\hline
+\textbf{Estado} & En desarrollo & \textbf{Estabilidad} & Alta \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Comentarios} \\
+\hline
+- \\
+\hline
+\end{tabular}
+
+\caption{Dirigir a los empleados}
+
+\end{table}
