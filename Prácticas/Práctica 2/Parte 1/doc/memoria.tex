@@ -6,11 +6,12 @@
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{array}
-\graphicspath{ {/home/csp98/latex/img/} {../diagramas/} {./img/} {../../../../LaTeX/img/}}
+\graphicspath{ {../../../../LaTeX/img/} {../diagramas/} {./img/} {../../LaTeX/img/}}
 \usepackage[table]{xcolor}
 \selectlanguage{spanish}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage[ddmmyy]{datetime}
 \usepackage[a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
 \makeindex
 
@@ -270,17 +271,17 @@ resumen \\
 \hline
 \textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Trazar ruta} \vline &  \cellcolor{gray!40}CU3 \\
 \hline
-\textbf{Actores} & \multicolumn{5}{m{8cm}|}{actores} \\
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{Encargado de oficina} \\
 \hline
-\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{tipo} \\
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{Primario y esencial} \\
 \hline
-\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{ref} \\
+\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{-} \\
 \hline
-\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{prec} \\
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{Tener listos los pedidos a realizar en el día} \\
 \hline
-\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{postc} \\
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{Las furgonetas tendrán una ruta asignada con unas tarea concretas} \\
 \hline
-\textbf{Autor} & José Baena Cobos & \textbf{Fecha} & fecha & \textbf{Versión} & v \\
+\textbf{Autor} & José Baena Cobos & \textbf{Fecha} & \today & \textbf{Versión} & 2.0 \\
 \hline
 \end{tabular}
 
@@ -290,7 +291,7 @@ resumen \\
 \hline
 \textbf{Propósito} \\
 \hline
-proposito \\
+Gestionar la ruta que seguirán las furgonetas de reparto para recoger y enviar los paquetes. \\
 \hline
 \end{tabular}
 
@@ -300,7 +301,7 @@ proposito \\
 \hline
 \textbf{Resumen} \\
 \hline
-resumen \\
+Se consultan los puntos por donde deben pasar las furgonetas de transporte para trazar la ruta más eficiente. \\
 \hline
 \end{tabular}
 
@@ -319,17 +320,20 @@ resumen \\
 \hline
 \textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Valorar el servicio} \vline &  \cellcolor{gray!40}CU5 \\
 \hline
-\textbf{Actores} & \multicolumn{5}{m{8cm}|}{actores} \\
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{\begin{enumerate}
+		\item Socio o emisor.
+		\item Encargado de oficina.
+	\end{enumerate}} \\
 \hline
-\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{tipo} \\
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{No obligatorio y secundario} \\
 \hline
-\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{ref} \\
+\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{-} \\
 \hline
-\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{prec} \\
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{Haber realizado un pedido} \\
 \hline
-\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{postc} \\
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{-} \\
 \hline
-\textbf{Autor} & José Baena Cobos & \textbf{Fecha} & fecha & \textbf{Versión} & v \\
+\textbf{Autor} & José Baena Cobos & \textbf{Fecha} & \today & \textbf{Versión} & 2.0 \\
 \hline
 \end{tabular}
 
@@ -339,7 +343,7 @@ resumen \\
 \hline
 \textbf{Propósito} \\
 \hline
-proposito \\
+Resolver las incidencias de los clientes a la vez que se mejora la calidad del servicio de cara a futuros trabajos. \\
 \hline
 \end{tabular}
 
@@ -349,7 +353,7 @@ proposito \\
 \hline
 \textbf{Resumen} \\
 \hline
-resumen \\
+Tras realizar un pedido, el cliente tiene la posibilidad de dejar una reseña o incidencia sobre su pedido. En caso de que se trate de una incidencia, la empresa evaluará la situación y le buscará una solución. \\
 \hline
 \end{tabular}
 
