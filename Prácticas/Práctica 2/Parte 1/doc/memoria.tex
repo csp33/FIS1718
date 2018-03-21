@@ -64,31 +64,45 @@
 
 \subsection{Identificación de actores}
 Los actores que participarán en esta práctica son los siguientes:
-\begin{itemize}
-\item Emisor.
-\item Socio.
-\item Receptor.
-\item Empleado de almacén.
-\item Encargado de oficina.
-\item Conductor.
-\end{itemize}
 
 \begin{table}[H]
 
 \centering
 \begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
 \hline
-\textbf{Actor} &  \multicolumn{4}{m{8cm}|}{nombre} \vline &  \cellcolor{gray!40}ID \\
+\textbf{Actor} &  \multicolumn{4}{m{8cm}|}{Emisor} \vline &  \cellcolor{gray!40}AC1 \\
 \hline
-\textbf{Descripción} & \multicolumn{5}{m{8cm}|}{desc} \\
+\textbf{Descripción} & \multicolumn{5}{m{8cm}|}{Representa un potencial socio.} \\
 \hline
-\textbf{Características} & \multicolumn{5}{m{8cm}|}{carac} \\
+\textbf{Características} & \multicolumn{5}{m{8cm}|}{Este actor representa un cliente ocasional de la empresa.} \\
 \hline
-\textbf{Relaciones} &\multicolumn{5}{m{8cm}|}{relac} \\
+\textbf{Relaciones} &\multicolumn{5}{m{8cm}|}{Generalización de socio.} \\
 \hline
-\textbf{Referencias} & \multicolumn{5}{m{8cm}|}{ref} \\
+\textbf{Referencias} & \multicolumn{5}{m{8cm}|}{CU1,CU2,CU5,CU6} \\
 \hline
-\textbf{Autor} & autor & \textbf{Fecha} & fecha & \textbf{Versión} & v \\
+\textbf{Autor} & Grupo & \textbf{Fecha} & 21/03/18 & \textbf{Versión} & 2.0 \\
+\hline
+\end{tabular}
+\caption{Emisor}
+
+\end{table}
+
+\begin{table}[H]
+
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Actor} &  \multicolumn{4}{m{8cm}|}{Socio} \vline &  \cellcolor{gray!40}AC2 \\
+\hline
+\textbf{Descripción} & \multicolumn{5}{m{8cm}|}{Representa un socio de la empresa.} \\
+\hline
+\textbf{Características} & \multicolumn{5}{m{8cm}|}{Una vez dado de alta en el sistema, el socio podrá acceder con sus datos para realizar todas sus gestiones.} \\
+\hline
+\textbf{Relaciones} &\multicolumn{5}{m{8cm}|}{Especialización de cliente.} \\
+\hline
+\textbf{Referencias} & \multicolumn{5}{m{8cm}|}{CU1,CU2,CU5,CU6} \\
+\hline
+\textbf{Autor} & Grupo & \textbf{Fecha} & 21/03/18 & \textbf{Versión} & 2.0 \\
 \hline
 \end{tabular}
 
@@ -100,7 +114,69 @@ Los actores que participarán en esta práctica son los siguientes:
 \hline
 \textbf{Nombre} & \textbf{Descripción} & \textbf{Tipo} \\
 \hline
-n1 & desc1 & tipo1 \\
+Datos Personales & Apellido, nombre, DNI, etc. & Cadena de caracteres \\
+\hline
+Datos de Acceso & DNI, constraseña & Cadena de caracteres \\
+\hline
+Historial de pedidos & Códigos de envío & Cadena de caracteres \\
+\hline
+\end{tabular}
+
+\caption{Socio}
+
+\end{table}
+
+\begin{table}[H]
+
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Actor} &  \multicolumn{4}{m{8cm}|}{Receptor} \vline &  \cellcolor{gray!40}AC3 \\
+\hline
+\textbf{Descripción} & \multicolumn{5}{m{8cm}|}{Representa un potencial cliente.} \\
+\hline
+\textbf{Características} & \multicolumn{5}{m{8cm}|}{Puede convertirse en un cliente de la empresa si su experiencia es satisfactoria.} \\
+\hline
+\textbf{Relaciones} &\multicolumn{5}{m{8cm}|}{Generalización de cliente.} \\
+\hline
+\textbf{Referencias} & \multicolumn{5}{m{8cm}|}{CU2,CU5} \\
+\hline
+\textbf{Autor} & Grupo & \textbf{Fecha} & 21/03/18 & \textbf{Versión} & 2.0 \\
+\hline
+\end{tabular}
+
+\caption{Receptor}
+
+\end{table}
+
+\begin{table}[H]
+
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Actor} &  \multicolumn{4}{m{8cm}|}{Empleado de almacén} \vline &  \cellcolor{gray!40}AC4 \\
+\hline
+\textbf{Descripción} & \multicolumn{5}{m{8cm}|}{Representa un empleado de la empresa.} \\
+\hline
+\textbf{Características} & \multicolumn{5}{m{8cm}|}{Se dedica a organizar los paquetes dentro del almacén y a cargar/descargar los vehículos.} \\
+\hline
+\textbf{Relaciones} &\multicolumn{5}{m{8cm}|}{Empleado} \\
+\hline
+\textbf{Referencias} & \multicolumn{5}{m{8cm}|}{CU4} \\
+\hline
+\textbf{Autor} & Grupo & \textbf{Fecha} & 21/03/18 & \textbf{Versión} & 2.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{4cm}|m{7.3cm}|m{4cm}|}
+\hline
+\multicolumn{3}{|m{15.3cm}|}{\textbf{Atributos}} \\
+\hline
+\textbf{Nombre} & \textbf{Descripción} & \textbf{Tipo} \\
+\hline
+DNI & Identificador del empleado & Cadena de caracteres \\
 \hline
 \end{tabular}
 
@@ -111,14 +187,105 @@ n1 & desc1 & tipo1 \\
 \hline
 \textbf{Comentarios} \\
 \hline
-coms \\
+Hay que otorgar a este actor unos privilegios concretos de gestión en el sistema para evitar que pueda modificar secciones críticas. \\
 \hline
 \end{tabular}
 
-\caption{Actor}
+\caption{Empleado de almacén}
 
 \end{table}
 
+\begin{table}[H]
+
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Actor} &  \multicolumn{4}{m{8cm}|}{Encargado de oficina} \vline &  \cellcolor{gray!40}AC5 \\
+\hline
+\textbf{Descripción} & \multicolumn{5}{m{8cm}|}{Representa un empleado de la empresa.} \\
+\hline
+\textbf{Características} & \multicolumn{5}{m{8cm}|}{Se dedica a planificar las rutas que trazarán los vehículos para entregar los paquetes realizando el recorrido más óptimo.} \\
+\hline
+\textbf{Relaciones} &\multicolumn{5}{m{8cm}|}{Empleado} \\
+\hline
+\textbf{Referencias} & \multicolumn{5}{m{8cm}|}{CU3,CU4} \\
+\hline
+\textbf{Autor} & Grupo & \textbf{Fecha} & 21/03/18 & \textbf{Versión} & 2.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{4cm}|m{7.3cm}|m{4cm}|}
+\hline
+\multicolumn{3}{|m{15.3cm}|}{\textbf{Atributos}} \\
+\hline
+\textbf{Nombre} & \textbf{Descripción} & \textbf{Tipo} \\
+\hline
+DNI & Identificador del empleado & Cadena de caracteres \\
+\hline
+\end{tabular}
+
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Comentarios} \\
+\hline
+Hay que otorgar a este actor unos privilegios concretos de gestión en el sistema para evitar que pueda modificar secciones críticas. \\
+\hline
+\end{tabular}
+
+\caption{Empleado de almacén}
+
+\end{table}
+
+\begin{table}[H]
+
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Actor} &  \multicolumn{4}{m{8cm}|}{Conductor} \vline &  \cellcolor{gray!40}AC6 \\
+\hline
+\textbf{Descripción} & \multicolumn{5}{m{8cm}|}{Representa un empleado de la empresa.} \\
+\hline
+\textbf{Características} & \multicolumn{5}{m{8cm}|}{Su trabajo consiste en transportar los paquetes desde un almacén a otro o bien desde un almacén hasta el destino.} \\
+\hline
+\textbf{Relaciones} &\multicolumn{5}{m{8cm}|}{Empleado} \\
+\hline
+\textbf{Referencias} & \multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Autor} & Grupo & \textbf{Fecha} & 21/03/18 & \textbf{Versión} & 2.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{4cm}|m{7.3cm}|m{4cm}|}
+\hline
+\multicolumn{3}{|m{15.3cm}|}{\textbf{Atributos}} \\
+\hline
+\textbf{Nombre} & \textbf{Descripción} & \textbf{Tipo} \\
+\hline
+DNI & Identificador del empleado & Cadena de caracteres \\
+\hline
+\end{tabular}
+
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Comentarios} \\
+\hline
+Hay que otorgar a este actor unos privilegios concretos de gestión en el sistema para evitar que pueda modificar secciones críticas. \\
+\hline
+\end{tabular}
+
+\caption{Conductor}
+
+\end{table}
 
 \subsection{Identificación de casos de uso}
 Los supuestos de casos de uso son:
