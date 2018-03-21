@@ -1,0 +1,315 @@
+\documentclass[12pt,spanish]{article}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[table]{xcolor}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{array}
+\graphicspath{ {../../LaTeX/img/} {/home/csp98/latex/img/}}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\makeindex
+
+\begin{document}
+\begin{titlepage}
+
+\newlength{\centeroffset}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+\thispagestyle{empty}
+
+\noindent\hspace*{\centeroffset}\begin{minipage}{\textwidth}
+
+\centering
+\includegraphics[width=0.9\textwidth]{logo_ugr.jpg}\\[1.4cm]
+
+\textsc{ \Large Fundamentos de Ingeniería del Software\\[0.2cm]}
+\textsc{GRADO EN INGENIERÍA INFORMÁTICA}\\[1cm]
+
+{\Huge\bfseries Relación 2.2\\
+}
+\noindent\rule[-1ex]{\textwidth}{3pt}\\[3.5ex]
+{\large\bfseries Ejercicio 2}
+\end{minipage}
+
+\vspace{2.5cm}
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+\centering
+
+\textbf{Autor}\\ {Carlos Sánchez Páez}\\[2.5ex]
+\includegraphics[width=0.3\textwidth]{etsiit_logo.png}\\[0.1cm]
+\vspace{1.5cm}
+\includegraphics[width=0.2\textwidth]{lsi.png}\\[0.1cm]
+\vspace{1cm}
+\textsc{Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación}\\
+\vspace{1cm}
+\textsc{Curso 2017-2018}
+\end{minipage}
+\end{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%Comienzo del documento%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\thispagestyle{empty}
+\listoftables
+\newpage
+\setcounter{page}{1}
+\section{Enunciado}
+{\large\textbf{Ejercicio 7.} Utilizando su conocimiento del funcionamiento de los cajeros automáticos,proponga un conjunto de casos de uso, para el actor cliente y elabore sus descripciones básicas.}
+\section{Resolución}
+\subsection{Lista de casos de uso}
+
+Los casos de uso del cajero automático serían los siguientes:
+\begin{enumerate}[label=\textbf{CU-\arabic*}]
+\item Sacar dinero.
+\item Ingresar dinero.
+\item Consultar movimientos.
+\item Cambiar PIN de la tarjeta/libreta.
+\item Realizar transferencia.
+\end{enumerate}
+Procedemos a su descripción general:
+
+\subsection{Sacar dinero}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Sacar dinero} \vline &  \cellcolor{gray!40}CU1 \\
+\hline
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{Cliente} \\
+\hline
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{Primario} \\
+\hline
+\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{Que el cliente tenga saldo en cuenta.} \\
+\hline
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{El saldo de la cuenta del cliente se ve reducido.} \\
+\hline
+\textbf{Autor} & Carlos Sánchez Páez & \textbf{Fecha} & 20/03/2018 & \textbf{Versión} & 2.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Propósito} \\
+\hline
+Que el cliente pueda sacar parte (o todo) el dinero en efectivo que tiene en su cuenta de ahorros. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Resumen} \\
+\hline
+El cliente solicita que se le de en efectivo una determinada cantidad de dinero que debe ser menor o igual al saldo en cuenta y/o créditos asociados. \\
+\hline
+\end{tabular}
+
+\caption{Sacar dinero}
+
+\end{table}
+
+\subsection{Ingresar dinero} 
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Ingresar dinero} \vline &  \cellcolor{gray!40}CU2 \\
+\hline
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{Cliente} \\
+\hline
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{Primario} \\
+\hline
+\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{Que el cliente tenga dinero en efectivo.} \\
+\hline
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{El saldo de la cuenta del cliente se ve incrementado.} \\
+\hline
+\textbf{Autor} & Carlos Sánchez Páez & \textbf{Fecha} & 20/03/2018 & \textbf{Versión} & 2.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Propósito} \\
+\hline
+Que el cliente pueda ingresar parte (o todo) el dinero en efectivo que tiene físicamente en ese momento. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Resumen} \\
+\hline
+El cliente solicita que se ingrese el dinero en efectivo que posee a una de sus cuentas de ahorros. \\
+\hline
+\end{tabular}
+
+\caption{Ingresar dinero}
+
+\end{table}
+
+\subsection{Consultar movimientos}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Consultar movimientos} \vline &  \cellcolor{gray!40}CU3 \\
+\hline
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{Cliente} \\
+\hline
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{Primario} \\
+\hline
+\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Autor} & Carlos Sánchez Páez & \textbf{Fecha} & 20/03/2018 & \textbf{Versión} & 2.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Propósito} \\
+\hline
+Que el cliente pueda visualizar los movimientos de su cuenta de ahorros en un período determinado. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Resumen} \\
+\hline
+El cliente obtiene (en papel o en pantalla) un listado de los últimos movimientos de una de sus cuentas de ahorros (ingresos, retiradas, pagos, etc.) \\
+\hline
+\end{tabular}
+
+\caption{Consultar movimientos}
+
+\end{table}
+
+
+\subsection{Cambiar PIN de la tarjeta/libreta}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Cambiar PIN} \vline &  \cellcolor{gray!40}CU4 \\
+\hline
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{Cliente} \\
+\hline
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{Primario} \\
+\hline
+\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{El cliente debe recordar el PIN anterior.} \\
+\hline
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{El PIN de la tarjeta/libreta cambia.} \\
+\hline
+\textbf{Autor} & Carlos Sánchez Páez & \textbf{Fecha} & 20/03/2018 & \textbf{Versión} & 2.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Propósito} \\
+\hline
+Que el cliente pueda cambiar el PIN (\emph{Personal Identification Number}) de una de sus libretas o tarjetas. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Resumen} \\
+\hline
+El cliente solicita que el PIN para poder realizar operaciones con su tarjeta/libreta cambie por uno nuevo que debe ser diferente al anterior. \\
+\hline
+\end{tabular}
+
+\caption{Cambiar PIN}
+
+\end{table}
+
+
+\subsection{Realizar transferencia}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Caso de uso} &  \multicolumn{4}{m{11cm}|}{Realizar transferencia} \vline &  \cellcolor{gray!40}CU5 \\
+\hline
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{Cliente} \\
+\hline
+\textbf{Tipo} & \multicolumn{5}{m{11cm}|}{Primario} \\
+\hline
+\textbf{Referencias} &\multicolumn{5}{m{11cm}|}{-} \\
+\hline
+\textbf{Precondición} & \multicolumn{5}{m{11cm}|}{Que el cliente tenga saldo suficiente en cuenta.} \\
+\hline
+\textbf{Postcondición} & \multicolumn{5}{m{11cm}|}{El saldo de la cuenta del cliente se ve reducido.} \\
+\hline
+\textbf{Autor} & Carlos Sánchez Páez & \textbf{Fecha} & 20/03/2018 & \textbf{Versión} & 2.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Propósito} \\
+\hline
+Que el cliente pueda transferir parte (o todo) el dinero que tiene en su cuenta de ahorros a otra persona. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Resumen} \\
+\hline
+El cliente solicita que se transfiera una cantidad de dinero de su cuenta a otra entidad, que puede ser cliente del banco o no (de otro banco distinto). \\
+\hline
+\end{tabular}
+
+\caption{Realizar transferencia}
+
+\end{table}
+
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%Fin del documento%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
