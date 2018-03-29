@@ -472,11 +472,304 @@ La \textbf{Ingeniería de Requisitos} cubre las tareas y proporciona los mecanis
 
 El proceso de construcción de una \emph{especificación de requisitos} es iterativo. En él, partimos de las especificaciones iniciales imcompletas, poco claras y ambiguas y llegamos a especificaciones finales \textbf{completas, claras, documentadas y validadas}.
 
+\subsubsection{Concepto de requisito y tipos}
+Un requisito se puede definir de varias formas:
+\begin{itemize}
+	\item Condición o capacidad que debe tener un producto software para resolver la necesidad expresada por un usuario.
+	\item Representación en forma de documento de una capacidad o condición que debe tener un producto software.
+	\item Característica de un productor software que es condición para su aceptación por parte del cliente.
+	\item Propiedad o restricción determinada con precisión que un producto software debe satisfacer.
+\end{itemize}
+
+\paragraph{Tipos de requisito}
+Los requisitos se pueden clasificar según varios factores:
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.25]{tipos_requisito.png}
+\caption{Tipos de requisito.}
+\end{figure}
+
+\begin{enumerate}
+	\item \textbf{Funcionales}. Describen la interacción entre el sistema y su entorno, proporcionando servicios que proveerá el sistema o indicando la forma en la que reaccionará ante determinados estímulos.
+	\item \textbf{No funcionales o atributo de calidad}. Describen cualidades o restricciones del sistema que no se relacionan de forma directa con el comportamiento funcional del mismo.
+	\begin{itemize}
+		\item Restringen los tipos de soluciones que podemos tomar y suelen restringir el diseño que se realice.
+		\item No describen funciones, sino propiedades (rendimiento, fiabilidad, seguridad, etc.).
+		\item Son los que garantizan la calidad del software.
+		\item Pueden ser requisitos de producto, de organización o externos.
+		\item Son difíciles de determinar.
+	\end{itemize}
+	\item \textbf{De información}. Describen necesidades de almacenamiento de información en el sistema.
+\end{enumerate}
+
+\subparagraph{Clasificación FURPS+}
+
+\begin{itemize}
+	\item Funcionalidad (\textbf{F}uncionality): requisito funcional.
+	\item Facilidad de uso (\textbf{U}sability): factores humanos, ayuda, documentación.
+	\item Rendimiento (\textbf{P}erformance): tiempos de respuesta, productividad, etc.
+	\item Soporte (\textbf{Supportability}): adaptabilidad, facilidad de mantenimiento, etc.
+	\item Pseudorrequisitos o restricciones de diseño (\textbf{+}):
+		\begin{itemize}
+			\item \textbf{Implementación}: limitación de recursos, lenguajes, etc.
+			\item \textbf{Interfaz}: restriccionesi mpuestas para la interacción con sistemas externos.
+			\item \textbf{Operación}: gestión del sistema en su puesta en marcha y a nivel operacional.
+			\item \textbf{Empaquetamiento}: formas de distribución, restricciones de instalación, etc.
+			\item \textbf{Legales}: licencias, derechos de autor, etc.
+		\end{itemize}
+\end{itemize}
+
+\paragraph{Ejemplos de requisitos}
+
+\begin{itemize}
+	\item El sistema debe validar la tarjeta en menos de tres segundos.
+	\item El sistema debe contar el número de palabras procesadas.
+	\item El sistema se diseñará para un terminal CRT monocromo.
+	\item Los usuarios del sistema serán en su mayoría novatos.
+	\item Deben producirse informes útiles
+\end{itemize}
 
 
 
+\subsubsection{Propiedades de los requisitos}
+
+Para que los requisitos sean de calidad deben satisfacer las siguientes propiedades:
+
+\begin{itemize}
+	\item \textbf{Completos}. Todos los aspectos del sistema deben estar representados en el modelo de requisitos.
+	\item \textbf{Consistentes}. Los requisitos no deben contradecirse entre sí.
+	\item \textbf{No ambiguos}. No se deben poder interpretar los requisitos de varias formas distintas.
+	\item \textbf{Correctos}. Deben representar exactamente el sistema que el cliente necesita y que el desarrollador construirá.
+	\item \textbf{Realistas}. Los requisitos se deben poder implementar con la tecnología y presupuesto disponible.
+	\item \textbf{Verificables}. Se deben poder diseñar pruebas para demostrar que el sistema satisface los requisitos.
+	\item \textbf{Trazables}. Cada requisito debe poder rastrearse a través del desarrollo del software hasta su conveniente funcionalidad del sistema.
+\end{itemize}
 
 
+\subsubsection{Tareas de la Ingeniería de Requisitos}
+
+\begin{enumerate}
+	\item \textbf{Estudio de viabilidad}. ¿Es conveniente desarrollar el sistema?
+		\begin{itemize}
+			\item ¿Soluciona el software los problemas existentes?
+			\item ¿Se puede desarrollar con la tecnología actual?
+			\item ¿Se puede desarrollar con las restricciones de costo y tiempo?
+			\item ¿Puede integrarse con otros existentes en la organización?
+		\end{itemize}
+		Este paso finaliza con la obtención del \emph{informe de viabilidad}.
+	\item \textbf{Obtención de requisitos}. Trabajo con clientes y usuarios para:
+		\begin{itemize}
+			\item Estudiar el funcionamiento del sistema.
+			\item Descubrir las necesidades reales.
+			\item Consensuar los requisitos entre las distintas partes.
+		\end{itemize}
+		Es un proceso difícil apoyado por diversas técnicas, como entrevistas, prototipados, casos de uso, etc. 
+		\item \textbf{Análisis de requisitos}. Es la actividad más importante. Sus objetivos son:
+			\begin{itemize}
+				\item Detectar conflictos entre requisitos.
+				\item Profundizar en el conocimiento del sistema.
+				\item Establecer las bases para el diseño.
+				\item Construir modelos abstractos.
+			\end{itemize}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{actividades_analisis_requisitos.png}
+				\caption{Actividades en el análisis de requisitos.}
+			\end{figure}
+		\item \textbf{Especificación de requisitos}. Consiste en representar los requisitos en base al modelo creado en el análisis.
+		\newpage
+		\item \textbf{Revisión de requisitos}
+			\begin{itemize}
+				\item \textbf{Validación}$^1$. Consiste en ver que los requisitos reflejan el problema a solucionar.
+				\item \textbf{Verificación}$^2$. Consiste en comprobar que la representación sea correcta.
+			\end{itemize}
+			Es un proceso continuo durante todo el desarrollo.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{revision_requisitos.png}
+				\caption{Revisión de requisitos.}
+			\end{figure}
+\end{enumerate}
+
+En cada fase obtenemos una serie de productos: 
+
+\begin{itemize}
+	\item En la \textbf{obtención de requisitos}.
+		\begin{enumerate}
+			\item Documentos de entrevistas.
+			\item Lista estructurada de requisitos.
+			\item Diagramas de casos de uso, plantillas de casos de uso y diagramas de actividad.
+		\end{enumerate}
+	\item En la \textbf{especificación de requisitos}.
+		\begin{itemize}
+			\item Modelo arquitectónico (subsistemas) $\rightarrow$ Diagrama de paquetes.
+			\item Modelo estático (conceptual) $\rightarrow$ Diagrama de clases.
+			\item Modelo dinámico (funcional) $\rightarrow$ Diagrama de secuencia del sistema y contratos.
+		\end{itemize}
+\end{itemize}
+
+\subsubsection{Roles}
+
+En la ingeniería de requisitos podemos distinguir varios roles: 
+
+\begin{itemize}
+	\item Stakeholder (personas que tienen relación con el sistema).
+	\item Ingeniero de requisitos.
+	\item Analista de sistemas.
+	\item Arquitecto de software (diseño).
+	\item Documentalista.
+	\item Diseñador de Interfaces de Usuario.
+	\item Gestor de proyecto,
+	\item Revisor.
+\end{itemize}
+
+\subsubsection{Problemas de la Ingeniería de Requisitos}
+
+Podemos agruparlos en 3 áreas:
+
+\begin{itemize}
+	\item Dificultades para \textbf{obtener información}.
+	\item Manejo de la \textbf{complejidad del problema}.
+	\item Dificultades para la \textbf{integración de los cambios}.
+\end{itemize}
+
+Pueden estar causados por:
+
+\begin{itemize}
+	\item Pobre comunicación
+	\item Uso de técnicas inapropiadas.
+	\item Tendencias a acortar el análisis.
+	\item No considerar alternativas.
+\end{itemize}
+
+\subsection{Obtención de Requisitos}
+
+\subsubsection{Proceso de obtención de requisitos}
+
+La obtención de requisitos es la fase inicial de la ingeniería de requisitos. Necesitamos obtener:
+\begin{itemize}
+	\item Necesidades y características del sistema.
+	\item Informe del alcance del sistema o producto.
+	\item Lista de participantes.
+	\item Descripción del entorno técnico.
+	\item Lista de los requisitos agrupados por su funcionalidad junto a las correspondientes restricciones que se aplicarán a cada uno.
+\end{itemize}
+\newpage
+Las tareas que se deben realizar son las siguientes: 
+
+\begin{enumerate}
+	\item Obtener información sobre el dominio del problema y el sistema actual.
+		\begin{itemize}
+			\item Conocer el vocabulario propio.
+			\item Conocer las características principales del dominio.
+			\item Recopilar información sobre el dominio (consultas con expertos, libros, etc.)
+			\item Facilitar la comprensión de las necesidades del sistema.
+			\item Favorecer la confianza del cliente.
+		\end{itemize}
+	Se ha de entregar la \emph{introducción al sistema} y el \emph{glosario de términos}.
+	\item Preparar las reuniones de elicitación y negociación.
+		\begin{itemize}
+			\item Identificar a los implicados, realizando una descripción general de todos y del perfil de cada uno de ellos.
+			\item Conocer las necesidades de los clientes y usuarios.
+			\item Resolver los posibles conflictos
+		\end{itemize}
+	\item Identificar y revisar los objetivos del sistema. Si el sistema es muy complejo, podemos organizarlos mediante una jerarquía. De cada objetivo podemos describir:
+		\begin{itemize}
+			\item Su \textbf{importancia} (vital, importante o "quedaría bien").
+			\item Su \textbf{urgencia} (inmediatamente, hay presión o puede esperar).
+			\item Su \textbf{estado} durante el desarrollo (en construcción, pendiente de solución, validado, etc.)
+			\item Su \textbf{estabilidad} (alta, media o baja).
+		\end{itemize}
+	\item Identificar y revisar los requisitos de información. De cada requisito podemos describir:
+		\begin{itemize}
+			\item Objetivos y otros requisitos asociados.
+			\item Descripción del requisito.
+			\item Contenido.
+			\item Tiempo de vida (medio y máximo).
+			\item Ocurrencias simultáneas (medio y máximo).
+			\item Importancia, urgencia, etc.
+		\end{itemize}
+	\item Identificar y revisar los requisitos funcionales. Determinan lo que debe hacer el sistema. De cada requisito podemos describir:
+		\begin{itemize}
+			\item Objetivos y requisitos asociados.
+			\item Secuencia de acciones.
+			\item Frecuencia.
+			\item Rendimiento.
+			\item Importancia, urgencia, etc.
+		\end{itemize}
+	\item Identificar y revisar los requisitos no funcionales. Son las restricciones aplicables a los requisitos funcionales y de información. De cada requisito podemos definir:
+		\begin{itemize}
+			\item Descripción.
+			\item Objetivos y requisitos asociados.
+			\item Importancia, urgencia, etc.
+		\end{itemize}
+\end{enumerate}
+Tras estos pasos se genera la \emph{lista estructurada de requisitos}.
+
+\subsubsection{Técnicas de obtención}
+
+\begin{itemize}
+	\item Por \textbf{métodos tradicionales}: entrevistas, cuestionarios, análisis de protocolos, etc.
+	\item Por \textbf{otros métodos}: técnicas orientadas a puntos de vista, escenarios y casos de uso, etc.
+\end{itemize}
+
+La información la poseen los implicados (\textit{stakeholders}). Un implicado puede ser todo aquel que se beneficia del sistema a construir directa o indirectamente o bien que posea información sobre su funcionamiento o desarrollo, como los responsables del mismo, el cliente, los responsables de la gestión, etc.
+\subsubsection{Técnicas de entrevista}
+
+Tienen el objetivo de obtener información sobre el sistema mediante el dialogo con los expertos en el dominio del problema. Las entrevistas pueden ser de varios tipos: estructuradas o no estructuradas y formales o informales.\\
+Las fases de una entrevista son:
+\begin{itemize}
+	\item \textbf{Preparación}. Se estudia el dominio del problema, selecciona a los entrevistados y se planifican las entrevistas.
+	\item \textbf{Realización}. Consta de:
+		\begin{itemize}
+			\item Apertura: presentación e informe sobre los objetivos de la entrevista.
+			\item Desarrollo.
+			\item Terminación: recapitulación de la información obtenida.
+
+		\end{itemize}
+	\item \textbf{Análisis}. Consiste en reorganizar la información, constatarla con otras fuentes , documentar la entrevista y enviar una copia al entrevistado.
+\end{itemize}
+
+Las principales limitaciones de una entrevista son que lo que los usuarios dicen no es siempre lo que hacen, la timidez y la interpretación de las preguntas. Sin embargo, aporta beneficios como la localización de las áreas en las que profundizar, la involucración de los clientes en el desarrollo o que es una técnica muy conocida y aceptada.
+
+\subsubsection{Técnicas de análisis etnográfico}
+
+Consiste en observar el contexto del sistema que afecta a los requisitos, es decir, observar la forma en la que las personas trabajan y no como el sistema las hace trabajar. 
+\\
+Hay dos tipos de observaciones: 
+\begin{itemize}
+	\item \textbf{Directa}. El observador está inmerso en el sistema.
+	\item \textbf{Indirecta}. Se utilizan entornos de observación.
+\end{itemize}
+
+Se utilizan fundamentalmente para dos tipos de requisitos:
+\begin{itemize}
+	\item Los que derivan de la forma en la que trabajan realmente y no de cómo se han definido los procesos.
+	\item Los que derivan de la cooperación y el conocimiento de las actividades de la gente.
+\end{itemize}
+
+No es un enfoque completo, sino que tiene que apoyarse en otras técnicas (entrevistas, prototipado, etc.)
+
+\subsection{Modelado de Casos de Uso}
+
+
+\subsubsection{Introducción}
+
+\subsubsection{Diagramas de Casos de Uso}
+
+\subsubsection{Actor}
+
+\subsubsection{Caso de Uso}
+
+\subsubsection{Descripción del actor}
+
+\subsubsection{Descripción del Caso de Uso}
+
+\subsubsection{Relaciones de los Casos de Uso}
+
+\subsubsection{Proceso de construcción del modelo de Casos de Uso}
+
+\subsubsection{Otros aspectos del modelo de Casos de Uso}
 
 
 
