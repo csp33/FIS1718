@@ -237,7 +237,7 @@ Hay que otorgar a este actor unos privilegios concretos de gestión en el sistem
 \hline
 \end{tabular}
 
-\caption{Empleado de almacén}
+\caption{Empleado de oficina}
 
 \end{table}
 
@@ -386,17 +386,17 @@ Los supuestos de casos de uso son:
 \hline
 \textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Consultar el estado de un paquete} \vline &  \cellcolor{gray!40}CU2 \\
 \hline
-\textbf{Actores} & \multicolumn{5}{m{8cm}|}{actores} \\
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{Emisor, socio, receptor} \\
 \hline
-\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{tipo} \\
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{Secundario, Esencial} \\
 \hline
-\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{ref} \\
+\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{CU-2.1} \\
 \hline
-\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{prec} \\
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{-} \\
 \hline
-\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{postc} \\
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{-} \\
 \hline
-\textbf{Autor} & José Miguel Pelegrina Pelegrina & \textbf{Fecha} & fecha & \textbf{Versión} & v \\
+\textbf{Autor} & José Miguel Pelegrina Pelegrina & \textbf{Fecha} & 21/03/18 & \textbf{Versión} & 1.0 \\
 \hline
 \end{tabular}
 
@@ -406,7 +406,7 @@ Los supuestos de casos de uso son:
 \hline
 \textbf{Propósito} \\
 \hline
-proposito \\
+Obtener la fecha de entrega de un paquete concreto \\
 \hline
 \end{tabular}
 
@@ -416,7 +416,7 @@ proposito \\
 \hline
 \textbf{Resumen} \\
 \hline
-resumen \\
+Un cliente solicita la información de un paquete, mostrando su fecha de entrega. \\
 \hline
 \end{tabular}
 
@@ -433,19 +433,19 @@ resumen \\
 \centering
 \begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
 \hline
-\textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Gestión de socios} \vline &  \cellcolor{gray!40}CU6 \\
+\textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Alta de socio} \vline &  \cellcolor{gray!40}CU6.1 \\
 \hline
-\textbf{Actores} & \multicolumn{5}{m{8cm}|}{actores} \\
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{Cliente, Empleado de oficina} \\
 \hline
-\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{tipo} \\
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{Primario, Esencial} \\
 \hline
-\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{ref} \\
+\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{-} \\
 \hline
-\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{prec} \\
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{-} \\
 \hline
-\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{postc} \\
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{El nuevo socio puede acceder al sistema mediante su DNI y una clave} \\
 \hline
-\textbf{Autor} & autor & \textbf{Fecha} & fecha & \textbf{Versión} & v \\
+\textbf{Autor} & Jose Miguel Pelegrina Pelegrina & \textbf{Fecha} & 21/03/18 & \textbf{Versión} & 1.0 \\
 \hline
 \end{tabular}
 
@@ -455,7 +455,7 @@ resumen \\
 \hline
 \textbf{Propósito} \\
 \hline
-proposito \\
+Un cliente pide que se le haga socio. \\
 \hline
 \end{tabular}
 
@@ -465,12 +465,141 @@ proposito \\
 \hline
 \textbf{Resumen} \\
 \hline
-resumen \\
+El empleado le hace socio haciendo que pueda entrar en el sistema con sus credenciales. \\
 \hline
 \end{tabular}
 
-\caption{Gestión de socios}
+\caption{Alta de Socio}
 \label{cu:6}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Baja de socio} \vline &  \cellcolor{gray!40}CU6.2 \\
+\hline
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{Socio, Empleado de oficina} \\
+\hline
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{Secundario, Esencial} \\
+\hline
+\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Autor} & José Miguel Pelegrina Pelegrina & \textbf{Fecha} & 21/03/18 & \textbf{Versión} & 1.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Propósito} \\
+\hline
+Representa la acción por parte de un socio de pedir la baja de la empresa \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Resumen} \\
+\hline
+El socio pide al empleado de oficina que quiere darse de baja de la empresa y el empleado elimina sus datos del sistema. \\
+\hline
+\end{tabular}
+
+\caption{Baja de Socio}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Consulta de socios} \vline &  \cellcolor{gray!40}CU6.3 \\
+\hline
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{Empleado de oficina} \\
+\hline
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{Secundario, Esencial} \\
+\hline
+\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Autor} & José Miguel Pelegrina Pelegrina & \textbf{Fecha} & 21/03/18 & \textbf{Versión} & 1.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Propósito} \\
+\hline
+Obtener información sobre los datos personales de un socio. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Resumen} \\
+\hline
+El empleado de oficina solicita información sobre un socio y el sistema le proporciona la información que posee sobre el mismo. \\
+\hline
+\end{tabular}
+
+\caption{Consulta de Socio}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Caso de uso} &  \multicolumn{4}{m{8cm}|}{Modificación de socio} \vline &  \cellcolor{gray!40}CU6.4 \\
+\hline
+\textbf{Actores} & \multicolumn{5}{m{8cm}|}{Socio(I),Empleado de Oficina} \\
+\hline
+\textbf{Tipo} & \multicolumn{5}{m{8cm}|}{Secundario, Esencial} \\
+\hline
+\textbf{Referencias} &\multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Precondición} & \multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{-} \\
+\hline
+\textbf{Autor} & José Miguel Pelegrina Pelegrina & \textbf{Fecha} & 21/03/18 & \textbf{Versión} & 1.0 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Propósito} \\
+\hline
+Modificar alguno de los datos que la empresa posee sobre un socio. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Resumen} \\
+\hline
+El socio solicita al empleado el cambio de alguno de sus datos personales, suministra los nuevos datos y se realizan los cambios pertinentes. \\
+\hline
+\end{tabular}
+
+\caption{Modificación de Socio}
 \end{table}
 
 
@@ -496,7 +625,7 @@ resumen \\
 \hline
 \textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{Las furgonetas tendrán una ruta asignada con unas tarea concretas} \\
 \hline
-\textbf{Autor} & José Baena Cobos & \textbf{Fecha} & \today & \textbf{Versión} & 2.0 \\
+\textbf{Autor} & José Baena Cobos & \textbf{Fecha} & 20/03/18 & \textbf{Versión} & 2.0 \\
 \hline
 \end{tabular}
 
@@ -548,7 +677,7 @@ Se consultan los puntos por donde deben pasar las furgonetas de transporte para 
 \hline
 \textbf{Postcondición} & \multicolumn{5}{m{8cm}|}{-} \\
 \hline
-\textbf{Autor} & José Baena Cobos & \textbf{Fecha} & \today & \textbf{Versión} & 2.0 \\
+\textbf{Autor} & José Baena Cobos & \textbf{Fecha} & 20/03/18 & \textbf{Versión} & 2.0 \\
 \hline
 \end{tabular}
 
