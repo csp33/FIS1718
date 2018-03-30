@@ -1,6 +1,10 @@
 \documentclass[12pt,spanish]{article}
 \usepackage[spanish]{babel}
 \usepackage{graphicx}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{multirow}
 \usepackage{amsmath}
 \usepackage{subcaption}
 \usepackage{adjustbox}
@@ -67,6 +71,7 @@
 \thispagestyle{empty}
 \newpage
 \tableofcontents{}
+\newpage
 \listoffigures
 \thispagestyle{empty}
 \newpage
@@ -152,16 +157,19 @@ El proceso de producción del software está formado por las siguientes etapas:
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[scale=0.75]{esfuerzo_etapas.png}
-\caption{Esfuerzo invertido en las distintas etapas.}
+	\centering
+	\begin{subfigure}[b]{0.4\textwidth}
+	\includegraphics[width=\textwidth]{esfuerzo_etapas.png}
+	\caption{Esfuerzo invertido en las distintas etapas.}
+	\end{subfigure}
+	\qquad
+	\begin{subfigure}[b]{0.4\textwidth}
+	\includegraphics[width=\textwidth]{esfuerzo_mantenimiento.png}
+	\caption{Esfuerzo invertido en las distintas etapas del mantenimiento.}
+	\end{subfigure}
+	\caption{Comparativa de esfuerzos.}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.75]{esfuerzo_mantenimiento.png}
-\caption{Esfuerzo invertido en las distintas etapas del mantenimiento.}
-\end{figure}
 
 \newpage
 
@@ -447,7 +455,7 @@ Consta de varias técnicas:
 En 1995 se realizó el informe \emph{CHAOS} sobre los resultados que se obtuvieron en diversos proyectos software:
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.75]{informe_chaos.png}
+\includegraphics[scale=0.5]{informe_chaos.png}
 \caption{Resultados del informe \emph{CHAOS}.}
 \end{figure}
 
@@ -752,119 +760,862 @@ No es un enfoque completo, sino que tiene que apoyarse en otras técnicas (entre
 
 \subsection{Modelado de Casos de Uso}
 
-
 \subsubsection{Introducción}
+
+El modelado de casos de uso es una técnica de la ingeniería de requisitos que permite:
+\begin{itemize}
+	\item Delimitar el sistema a estudiar.
+	\item Determinar el contexto de uso del sistema.
+	\item Describir el punto de vista de los usuarios del sistema.
+\end{itemize}
+
+El modelo de casos de uso se utiliza en distintas etapas del desarrollo para:
+\begin{itemize}
+	\item Obtener requisitos.
+	\item Analizar y especificar requisitos.
+	\item Como base para el proceso de diseño y su validación.
+	\item Para guiar el diseño de la interfaz de usuario y facilitar la construcción de prototipos.
+	\item Como punto de inicio de las ayudas en línea y el manual de usuario.
+\end{itemize}
+
+Elementos que componen el modelo de casos de uso:
+\begin{itemize}
+	\item Actores.
+	\item Casos de uso.
+	\item Relaciones entre:
+		\begin{itemize}
+			\item Actores.
+			\item Actores y casos de uso.
+			\item Casos de uso.
+		\end{itemize}
+\end{itemize}
+
+Para representar y describir estos elementos se utilizan los \emph{diagramas de casos de uso de UML} y las \emph{plantillas estructuradas para actores y casos de uso}.
 
 \subsubsection{Diagramas de Casos de Uso}
 
+Es un diagrama UML que representa gráficamente todos los elementos que forman parte del modelo de casos de uso junto con la frontera del sistema.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.25]{diagramas_cu.png}
+\caption{Diagrama de caso de uso}
+\end{figure}
+
 \subsubsection{Actor}
+
+\paragraph{Definición}
+Un actor es una abstracción de una \emph{entidad externa} al sistema que interactúa directamente con él.
+\begin{itemize}
+	\item Los actores especifican roles que adoptan las entidades externas cuando interactúan con el sistema.
+	\item Una entidad puede desempeñar varios roles simultáneamente a lo largo del tiempo.
+	\item Un rol puede ser desempeñado por varias entidades.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.15\textwidth}
+		\includegraphics[width=\textwidth]{actor_1.png}
+		\caption{}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.25\textwidth}
+		\includegraphics[width=\textwidth]{actor_2.png}
+		\caption{}
+	\end{subfigure}
+	\caption{Representaciones de un actor en UML.}
+\end{figure}
+
+\paragraph{Características}
+El nombre del rol debe ser breve y tener sentido desde la perspectiva de negocio. Es frecuente que coincidan con áreas de la empresa (vendedor, gestor de almacén) o distintos niveles de jerarquía (jefe, empleado, aprendiz).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{actor_rol.png}
+	\caption{Distintos roles para los actores.}
+\end{figure}
+	
+\paragraph{Tipos de actores}
+
+\begin{itemize}
+	\item \textbf{Principales}. Además de interactuar con el caso de uso, son los que lo \emph{activan}.
+	\item \textbf{Secundarios}. Interactúan con el caso de uso, pero no lo activan.
+\end{itemize}
+
+Los actores pueden ser:
+
+\begin{itemize}
+	\item \textbf{Personas} con el rol de usuario en el sistema.
+	\item \textbf{Dispositivos de E/S} como sensores o medidores, simepre que sean independientes de la acción del usuario.
+	\item \textbf{Sistemas informáticos externos} con los que se tiene que comunicar.
+	\item \textbf{Temporizador} o reloj cuando se hace algo como respuesta a un evento de tiempo de tipo periódico o en un momento determinado, sin que haya un actor que lo active.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{actor_ej.png}
+	\caption{Ejemplos de actores.}
+\end{figure}
+
+\paragraph{Identificación de actores}
+Debemos responder a las siguientes preguntas:
+\begin{itemize}
+	\item ¿Quién y qué utiliza el sistema?
+	\item ¿Qué roles desempeñan en la iteración?
+	\item ¿Quién instala el sistema?
+	\item ¿Quién o qué inicio y cierra el sistema?
+	\item ¿Quién mantiene el sistema?
+	\item ¿Qué otros sistemas interactúan con este sistema?
+	\item ¿Quién o qué consigue y proporciona información al sistema?
+\end{itemize}
+
+\newpage
+
+\paragraph{Relación entre actores\\\\}
+
+\textbf{Generalización}. Expresa un comportamiento común entre actores, es decir, se relacionan de la misma forma con los mismos casos de uso.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.65]{actores_relacion.png}
+	\caption{Relación entre actores.}
+\end{figure}
+
+Según esta relación:
+\begin{itemize}
+	\item Un empleado modela los aspectos comunes de cualquier tipo de empleado.
+	\item Un jefe hereda los roles y la relaciones de los casos de uso del empleado, además de tener los suyos propios.
+	\item Un actor jefe puede ser usado siempre en lugar de un actor empleado, ya que hereda sus roles y relaciones.
+\end{itemize}
+
 
 \subsubsection{Caso de Uso}
 
+\paragraph{Definición}
+
+Un caso de uso especifica la \emph{secuencia de acciones}, incluidas secuencias variantes y de error, que un sistema o subsistema puede realizar al interactuar con actores externos.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{cu_repr.png}
+	\caption{Representación de un caso de uso.}
+\end{figure}
+
+El \emph{nombre} debe ser una frase verbal descriptiva y breve.\\
+Dependiendo de su importancia, los casos de uso pueden ser:
+\begin{itemize}
+	\item \textbf{Primarios}. Procedimientos comunes más importantes (\emph{procesos de negocio}).
+	\item \textbf{Secundarios}. Procesos de error o poco comunes (\emph{procesos internos, diseño}).
+	\item \textbf{Opcionales}. Puede que no se implementen.
+\end{itemize}
+
+\paragraph{Características}
+
+\begin{itemize}
+	\item Son \emph{iniciados por un actor} que, junto con otros actores, intercambia datos o control con el sistema a a través de él.
+	\item Son descritos desde el \emph{punto de vista de los actores} que interactúan con él.
+	\item \emph{Describen} el proceso de \emph{alcance de un objetivo} de uno o varios actores.
+	\item Tiene que tener una \emph{utilidad real y concreta} para algún actor.
+	\item \emph{Acotan} una \emph{funcionalidad} del sistema.
+	\item \emph{Describen} un fragmento de la \emph{funcionalidad} del sistema de principio a fin $\rightarrow$ tienen que acabar y dar algún resultado.
+	\item Se documentan con \emph{texto informal}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{| m{3pt} | m{7cm} | m{3pt} | m{7cm} |}
+\hline
+\multicolumn{2}{|c|}{\textbf{Acción del actor}} & \multicolumn{2}{c|}{\textbf{Acción del sistema}} \\
+\hline
+1 & \textbf{Alumno}. Indica que quiere elegir un proyecto determinado. & &\\
+\hline
+2 & \textbf{Responsable}. Pide al alumno la prioridad con la que se solicita el proyecto. & &\\
+\hline
+ & & 3 & Comprueba los proyectos previamente solicitados por el alumno. \\
+\hline
+ & & 4 & Almacena la elección de proyecto del alumno. \\
+\hline
+ & & 5 & Informa de la elección realizada y del éxito de la solicitud. \\
+\hline
+6 &  \textbf{Responsable}. Informa al alumno de que la solicitud se ha realizado correctamente. & & \\
+\hline
+\end{tabular}
+\caption{Ejemplo de caso de uso (elegir proyecto).}
+\end{figure}
+
+Un \textbf{caso de uso} sirve para \emph{satisfacer un objetivo} de un actor.\\
+En el análisis de requisitos, un caso de uso se puede descomponer a nivel de \emph{procesos de negocio elementales}.\\
+Un \textbf{proceso de negocio elemental} es una tarea o acción realizada por un actor como respuesta a un evento de negocio. Añade un valor cuantificable para el negocio y deja los datos en un estado consistente.
+
+\paragraph{Identificación de casos de uso}
+
+Debemos responder las siguientes preguntas:
+
+\begin{itemize}
+	\item ¿Qué \emph{objetivos} o \emph{necesidades} tendrá un \emph{actor} específico del sistema?
+	\item El sistema \emph{almacena} y \emph{recupera} información? Si es así, ¿qué actores activan este comportamiento?.
+	\item ¿Qué sucede cuando el sistema \emph{cambia de estado} (por ejemplo, al iniciarlo o detenerlo)? ¿Se le notifica a algún actor?
+	\item ¿Afecta algún \emph{evento externo} al sistema? ¿Cómo se notificarán esos eventos?
+	\item ¿Interactúa el sistema con algún \emph{sistema externo}?
+	\item ¿Generará el sistema algún \emph{informe}?
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{cu_ej.png}
+	\caption{Ejemplo de un caso de uso (gestión de proyectos).}
+\end{figure}
+\newpage
 \subsubsection{Descripción del actor}
+
+Para describir a un actor utilizaremos la siguiente plantilla: 
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Actor} &  \multicolumn{4}{m{8cm}|}{\textit{Nombre el actor.}} &  \cellcolor{gray!40}\textit{ID} \\
+\hline
+\textbf{Descripción} & \multicolumn{5}{m{8cm}|}{\textit{Breve descripción del actor.}} \\
+\hline
+\textbf{Características} & \multicolumn{5}{m{8cm}|}{\textit{Características que describen al actor.}} \\
+\hline
+\textbf{Relaciones} &\multicolumn{5}{m{8cm}|}{\textit{Relaciones que posee el actor con otros actores del sistema.}} \\
+\hline
+\textbf{Referencias} & \multicolumn{5}{m{8cm}|}{\textit{Elementos del desarrollo en los que interviene el actor (casos de uso, diagramas, etc.)}} \\
+\hline
+\textbf{Autor} &  & \textbf{Fecha} &  & \textbf{Versión} &  \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\begin{tabular}{|m{4cm}|m{7.3cm}|m{4cm}|}
+\hline
+\multicolumn{3}{|m{15.3cm}|}{\textbf{Atributos}} \\
+\hline
+\textbf{Nombre} & \textbf{Descripción} & \textbf{Tipo} \\
+ \hline
+... & ... & ... \\
+\hline
+\multicolumn{3}{|m{15.3cm}|}{\textit{Atributos principales del actor.}} \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Comentarios} \\
+\hline
+\textit{Comentarios adicionales sobre el actor.} \\
+\hline
+\end{tabular}
+
+\caption{Plantilla para la descripción de un actor}
+
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{4cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Actor} &  \multicolumn{4}{m{8cm}|}{Profesor} & \cellcolor{gray!40} \textit{ACT1} \\
+\hline
+\textbf{Descripción} & \multicolumn{5}{m{8cm}|}{Profesor que tutoriza algún proyecto de la asignatura TFG} \\
+\hline
+\textbf{Características} & \multicolumn{5}{m{8cm}|}{Puede ser cualquier profesor perteneciente a la ETSIIT.} \\
+\hline
+\textbf{Relaciones} &\multicolumn{5}{m{8cm}|}{\textit{-}} \\
+\hline
+\textbf{Referencias} & \multicolumn{5}{m{8cm}|}{CU1 (Definir proyecto)} \\
+\hline
+\textbf{Autor} & LSI & \textbf{Fecha} & - & \textbf{Versión} & - \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{4cm}|m{7.3cm}|m{4cm}|}
+\hline
+\multicolumn{3}{|m{15.3cm}|}{\textbf{Atributos}} \\
+\hline
+\textbf{Nombre} & \textbf{Descripción} & \textbf{Tipo} \\
+\hline
+Datos personales & Nombre, DNI, correo, etc. & Lista de cadenas de caracteres. \\
+ \hline
+Departamento & Nombre del departamento al que pertenece & Cadenas de caracteres. \\
+\hline
+Lista de proyectos & Trabajos que oferta para realizar. &  \\
+\hline
+
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Comentarios} \\
+\hline
+- \\
+\hline
+\end{tabular}
+
+\caption{Ejemplo: descripción del actor profesor.}
+
+\end{figure}
 
 \subsubsection{Descripción del Caso de Uso}
 
+\paragraph{Contenido}
+
+La descripción de un caso de uso comprende:
+\begin{itemize}
+	\item \textbf{Inicio}. Cuándo y qué actor lo produce.
+	\item \textbf{Fin}. Cuándo se produce y qué se obtiene.
+	\item \textbf{Interacción}. Para qué se usa o qué intenta el caso de uso.
+	\item \textbf{Cronología} y origen de las interacciones.
+	\item \textbf{Repeticiones de comportamiento}. Qué acciones se repiten.
+	\item \textbf{Situaciones opcionales o de error}. Qué situaciones alternativas se presentan en el caso de uso.
+\end{itemize}
+
+\paragraph{Tipos de casos de uso}
+
+\begin{itemize}
+	\item Dependiendo del \textbf{procesamiento}:
+		\begin{itemize}
+			\item \textbf{Básico}. Descripción general del procesamiento.
+			\item \textbf{Extendido}. Descripción de la secuencia de acción completa entre actores y sistema.
+		\end{itemize}	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.35]{cu_basico_extendido.png}
+		\caption{Diferencia entre caso de uso básico y extendido.}
+	\end{figure}
+	\item Dependiendo de su \textbf{nivel de abstracción}:
+		\begin{itemize}
+			\item \textbf{Esencial}. Expresado de forma abstracta, contiene poca tecnología y pocos detalles de diseño.
+			\item \textbf{Real}. Expresado en base al diseño actual. Aparecen relaciones con la \emph{interfaz de usuario}.
+		\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.3]{cu_real_esencial.png}
+		\caption{Diferencia entre caso de uso real y esencial.}
+	\end{figure}
+			
+\end{itemize}
+
+\paragraph{Plantilla básica}
+La plantilla básica para casos de uso es la siguiente: 
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{2.65cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Caso de uso} &  \multicolumn{4}{m{9.65cm}|}{\textit{Nombre del caso de uso}} &  \cellcolor{gray!40}ID \\
+\hline
+\textbf{Actores} & \multicolumn{5}{m{9.65cm}|}{\textit{Actores que participan en el caso de uso, indicando si son principales o secundarios.}} \\
+\hline
+\textbf{Tipo} & \multicolumn{5}{m{9.65cm}|}{\textit{Tipo de caso de uso.}} \\
+\hline
+\textbf{Referencias} &\multicolumn{3}{m{4.77cm}|}{\textit{Requisitos funcionales}} & \multicolumn{2}{m{4.77cm}|}{\textit{Casos de uso}} \\
+\hline
+\textbf{Precondición} & \multicolumn{5}{m{9.65cm}|}{\textit{Condiciones sobre el estado del sistema que deben cumplirse para que se pueda realizar el caso de uso.}} \\
+\hline
+\textbf{Postcondición} & \multicolumn{5}{m{9.65cm}|}{\textit{Efectos que tiene la realización del caso de uso sobre el sistema.}} \\
+\hline
+\textbf{Autor} & - & \textbf{Fecha} & - & \textbf{Versión} & - \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Propósito} \\
+\hline
+\textit{Descripción del objetivo que cubre el caso de uso (una línea).} \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Resumen} \\
+\hline
+\textit{Descripción a alto nivel de la secuencia de acciones realizadas en el caso de uso (un párrafo).} \\
+\hline
+\end{tabular}
+
+\caption{Plantilla básica para casos de uso}
+
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{2.65cm}|m{2cm}|m{2cm}|m{2cm}|m{1cm}|}
+\hline
+\textbf{Caso de uso} &  \multicolumn{4}{m{9.65cm}|}{Elegir proyecto} &  \cellcolor{gray!40}CU05 \\
+\hline
+\textbf{Actores} & \multicolumn{5}{m{9.65cm}|}{Alumno (principal) y responsable (secundario)} \\
+\hline
+\textbf{Tipo} & \multicolumn{5}{m{9.65cm}|}{Primario y esencial.} \\
+\hline
+\textbf{Referencias} &\multicolumn{3}{m{4.77cm}|}{RF27 y RF31} & \multicolumn{2}{m{4.77cm}|}{CU01} \\
+\hline
+\textbf{Precondición} & \multicolumn{5}{m{9.65cm}|}{El alumno debe estar matriculado en la asignatura \textit{Proyectos informáticos}.} \\
+\hline
+\textbf{Postcondición} & \multicolumn{5}{m{9.65cm}|}{El alumno tendrá un proyecto más en su lista de proyectos elegidos.} \\
+\hline
+\textbf{Autor} & LSI & \textbf{Fecha} & -  & \textbf{Versión} & - \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Propósito} \\
+\hline
+Permitir que el alumno pueda elegir un posible proyecto a realizar de entre los ofertados por los profesores. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Resumen} \\
+\hline
+El alumno informa que quiere seleccionar un proyecto, indica la prioridad con la que realiza la selección y se almacena su interés por el proyecto. \\
+\hline
+\end{tabular}
+
+\caption{Ejemplo: plantilla básica del caso de uso elegir proyecto}
+
+\end{figure}
+
+
+\paragraph{Plantilla extendida}
+Para la descripción extendida recurrimos a \emph{escenarios}.\\
+
+Un \textbf{escenario} es una secuencia específica y concreta de acciones e interacciones entre los actores y el sistema objeto de estudio. \\
+
+Los sistemas pueden ser:
+\begin{itemize}
+	\item \textbf{Básicos}. Situaciones normales y comunes de actuación.
+	\item \textbf{Secundarios}. Se corresponden con situaciones alternativas y de error.
+\end{itemize}
+
+Consiste en añadir lo siguiente a la plantilla básica: 
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{5pt}|m{7.33cm}|m{5pt}|m{7.33cm}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Curso normal}} \\
+\hline
+\multicolumn{2}{|c}{\textbf{Actor}} & \multicolumn{2}{|c|}{\textbf{Sistema}} \\
+\hline
+\textbf{1} & \textit{Acción realizada por un actor} & \textbf{2} & \textit{Acción realizada por el sistema.} \\
+\hline
+\textbf{..} & ... & \textbf{..} & ... \\
+\hline
+\textbf{\footnotesize{m}} & \textit{Acción realizada por un actor} & \textbf{..} & ... \\
+\hline
+\textbf{-} & ... & \textbf{n} & \textit{Acción realizada por el sistema.} \\
+\hline
+
+\end{tabular}
+
+\vspace{0.5cm}
+
+\begin{tabular}{|m{15pt}|m{7.15cm}|m{6pt}|m{7.15cm}|}
+\hline
+\multicolumn{4}{|m{16.2cm}|}{\textbf{Cursos alternos}} \\
+\hline
+\textbf{n.a} & \multicolumn{3}{l|}{\textit{Alternativa \emph{a} a la acción n del curso normal.}}  \\
+\hline
+\multicolumn{2}{|m{7.2cm}}{\textbf{Actor}} & \multicolumn{2}{|m{7.2cm}|}{\textbf{Sistema}} \\
+\hline
+1 & \textit{Acción del actor} & .. & ... \\
+\hline
+.. & ... & 2 & \textit{Acción del sistema} \\
+\hline
+.. & ... & .. & ... \\
+\hline
+\textbf{n.b} & \multicolumn{3}{l|}{\textit{Alternativa \emph{b} a la acción n del curso normal.}}  \\
+\hline
+.. & ... & .. & ... \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\begin{tabular}{|m{3.75cm}|m{3.75cm}|m{3.75cm}|m{3.8cm}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Otros datos}} \\
+\hline
+\textbf{Frecuencia esperada} & \textit{Número de veces que se realiza el caso de uso por unidad de tiempo.} & \textbf{Rendimiento} & \textit{Rendimiento esperado.} \\
+\hline
+\textbf{Importancia} & \textit{Vital, alta, moderada o baja.} & \textbf{Urgencia} & \textit{Urgencia en su desarrollo.} \\
+\hline
+\textbf{Estado} & \textit{Estado de desarrollo actual.} & \textbf{Estabilidad} & \textit{Estabilidad de los requisitos asociados} \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Comentarios} \\
+\hline
+\textit{Otros aspectos a aclarar.} \\
+\hline
+\end{tabular}
+
+\caption{Plantilla extendida para casos de uso.}
+
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{5pt}|m{7.33cm}|m{5pt}|m{7.33cm}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Curso normal}} \\
+\hline
+\multicolumn{2}{|c}{\textbf{Actor}} & \multicolumn{2}{|c|}{\textbf{Sistema}} \\
+\hline
+\textbf{1} & El alumno solicita la lista de proyectos ofertados. & \textbf{2} & Proporciona la lista. \\
+\hline
+\textbf{3} & El alumno elige un proyecto determinado. & \textbf{4} & Solicita la prioridad con la que el alumno realiza la petición. \\
+\hline
+\textbf{4} & El alumno proporciona la prioridad deseada. & \textbf{6} & Almacena la elección realizada por el alumno e informa de que la operación ha sido realizada con éxito. \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\begin{tabular}{|m{15pt}|m{7.15cm}|m{6pt}|m{7.15cm}|}
+\hline
+\multicolumn{4}{|m{16.2cm}|}{\textbf{Cursos alternos}} \\
+\hline
+\textbf{6.a} & \multicolumn{3}{l|}{El alumno proporciona una prioridad ya usada para otro proyecto.}  \\
+\hline
+\multicolumn{2}{|m{7.2cm}}{\textbf{Actor}} & \multicolumn{2}{|m{7.2cm}|}{\textbf{Sistema}} \\
+\hline
+.. & ... & 1 & El sistema informa de la situación y finaliza el caso de uso. \\
+\hline
+\textbf{6.b} & \multicolumn{3}{l|}{El alumno ha elegido más de 10 proyectos.}  \\
+\hline
+.. & ... & 1 & El sistema informa de la situación y finaliza el caso de uso. \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\begin{tabular}{|m{3.75cm}|m{3.75cm}|m{3.75cm}|m{3.8cm}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Otros datos}} \\
+\hline
+\textbf{Frecuencia esperada} & 40 veces al año. & \textbf{Rendimiento} & No más de 5 minutos. \\
+\hline
+\textbf{Importancia} & Alta. & \textbf{Urgencia} & Alta. \\
+\hline
+\textbf{Estado} & Iniciando su desarrollo. & \textbf{Estabilidad} & Alta. \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{|m{16.2cm}|}
+\hline
+\textbf{Comentarios} \\
+\hline
+El caso de uso se realizará por al menos 40 alumnos. \\
+\hline
+\end{tabular}
+
+\caption{Ejemplo: plantilla extendida del caso de uso elegir proyecto.}
+
+\end{figure}
+
 \subsubsection{Relaciones de los Casos de Uso}
 
+Las \emph{finalidades} de las relaciones son:
+\begin{itemize}
+	\item \textbf{Organizar} los casos de uso.
+	\item Mejorar la \textbf{comprensión}.
+	\item \textbf{Reducir la redundancia} del texto.
+	\item \textbf{Mejorar la gestión} de los documentos generados.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{3cm}|m{6.5cm}|m{6cm}|}
+\hline
+\cellcolor{blue!30}Tipo de Relación & \cellcolor{blue!30}Definición & \cellcolor{blue!30}Notación \\
+\hline
+\textbf{Asociación} & Relación entre un actor y el caso de uso en el que participa. &
+\begin{center}
+\includegraphics[scale=0.5]{asociacion_uml.png}
+\end{center} \\
+\hline
+\textbf{Extensión} & Relación entre casos de uso. Representa la inserción de fragmentos de comportamiento adicional sin que el caso de uso base conozca los casos de uso de extensión &
+\begin{center}
+\includegraphics[scale=0.4]{extension_uml.png}
+\end{center} \\
+\hline
+\textbf{Generalización} & Relación entre un caso de uso general y otro específico, que hereday añade características al caso de uso general. &
+\begin{center}
+\includegraphics[scale=0.4]{generalizacion_uml.png}
+\end{center} \\
+\hline
+\textbf{Inclusión} & Relación entre casos de uso. Representa la inserción de comportamiento adicional dentro del caso de uso base. Hace referencia explícita al caso de uso de inclusión. & 
+\begin{center}
+\includegraphics[scale=0.4]{inclusion_uml.png}
+\end{center}\\
+\hline
+\end{tabular}
+\caption{Tipos de relaciones entre casos de uso}
+\end{figure}
+
+\paragraph{Relación de inclusión}
+
+Sus características son las siguientes:
+\begin{itemize}
+	\item Es una \textbf{relación de dependencia} entre dos casos de uso que permite \emph{incluir el comportamiento} de un caso de uso en el flujo de otro.
+	\item El caso de uso que incluye se denomina \emph{caso de uso base} y el incluido \emph{caso de uso de inclusión}.
+	\item El caso de uso base se realiza hasta que se alcanza el punto donde se encuentra la referencia al caso de uso de inclusión, donde la ejecución pasa al caso de uso de inclusión. Cuando éste termina, el control regresa al caso de uso base.
+	\item El caso de uso de inclusión se utiliza \emph{completamente} por el caso de uso base.
+	\item El caso de uso base \emph{no está completo} sin todos sus casos de uso de inclusión.
+	\item El caso de uso de inclusión puede ser \emph{compartido} por varios casos de uso base.
+	\item El caso de uso de inclusión \emph{no es opcional} y es necesario para que tenga sentido el caso de uso base.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{ej_inclusion.png}
+\caption{Ejemplo de inclusión en un diagrama.}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{10pt}|m{7cm}|m{10pt}|m{7cm}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Curso normal}} \\
+\hline
+\multicolumn{2}{|c}{\textbf{Actor}} & \multicolumn{2}{|c|}{\textbf{Sistema}} \\
+\hline
+\textbf{1} & El socio solicita el alquiler de una película. &  & \\
+\hline
+\textbf{2} & El socio proporciona sus datos de socio. &  &  \\
+\hline
+\textbf{3} & El empleado identifica al socio. & \textbf{4} & \textbf{incluir(CU12. Identificación de socio)} \\
+\hline
+\textbf{5} & El socio proporciona el título de la película a alquilar. &  &  \\
+\hline
+\textbf{5} & El empleado identifica la película y pide registro del alquiler. & \textbf{7} & \textbf{incluir(CU17. Disponibilidad de películas)}. \\
+\hline
+ & & \textbf{8} & Guarda los datos del alquiler.  \\
+\hline
+ & & \textbf{8} & Informa de la cantidad a pagar.  \\
+\hline
+\textbf{10} & El empleado informa al socio de la cantidad a pagar. &  &  \\
+\hline
+\textbf{11} & Realiza el pago del alquiler. & \textbf{12} & Genera el resguardo de alquiler. \\
+\hline
+\textbf{10} & El empleado entrega el resguardo al socio. &  &  \\
+\hline
+\end{tabular}
+\caption{Ejemplo de inclusión en la descripción de un caso de uso (alquilar película)}
+\end{figure}
+
+\paragraph{Relación de extensión}
+
+Sus características son:
+
+\begin{itemize}
+	\item Es una \emph{relación de dependencia} que especifica que el comportamiento del caso de uso base puede ser extendido por otro caso de uso (caso de uso de extensión) bajo determinadas condiciones.
+	\item El caso de uso base declara uno o más \emph{puntos de extensión} que son "anclajes" en los que se pueden añadir nuevos comportamientos.
+	\item El caso de uso de extensión define \emph{segmentos de inserción}, que pueden ser insertados en los puntos de enganche cuando se cumpla una determinada condición.
+	\item El \emph{caso de uso base} no sabe nada de los casos de uso de extensión y \emph{está completo sin ellos}. De hecho, los puntos de extensión no están numerados en el flujo de eventos del caso de uso base.
+	\item El caso de uso de extensión no tiene sentido sin el caso de uso base.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.25\textwidth}
+		\includegraphics[width=\textwidth]{extension_basica.png}
+		\caption{Notación básica}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{extension_extendida.png}
+		\caption{Notación extendida}
+	\end{subfigure}
+	\vskip 0.5cm
+	\begin{subfigure}[b]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{extension_condiciones.png}
+		\caption{Notación extendida con condiciones}
+	\end{subfigure}
+	\caption{Distintas notaciones de la relación de extensión.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{10pt}|m{7cm}|m{10pt}|m{7cm}|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Curso normal}} \\
+\hline
+\multicolumn{2}{|c}{\textbf{Actor}} & \multicolumn{2}{|c|}{\textbf{Sistema}} \\
+\hline
+\textbf{1} & El socio solicita devolver de una película. &  & \\
+\hline
+\textbf{2} & El socio proporciona sus datos de socio. &  &  \\
+\hline
+\textbf{3} & El empleado identifica al socio. & \textbf{4} & incluir(CU12. Identificación de socio) \\
+\hline
+\textbf{5} & El socio proporciona el título de la película a devolver. &  &  \\
+\hline
+ & \textbf{Punto de extensión: retrasado} & & \\
+ \hline
+\textbf{6} & El empleado incluye la película devuelta. & \textbf{7} & Almacena la devolución. \\
+\hline
+  & \textbf{Punto de extensión: pagarMulta}. & &   \\
+\hline
+ & & \textbf{8} & El empleado proporciona justificante de devolución.  \\
+\hline
+\end{tabular}
+\caption{Ejemplo de extensión en la descripción de un caso de uso (devolver película)}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso de uso de extensión}} & \multicolumn{2}{c|}{Emitir aviso} \\
+\hline
+\multicolumn{2}{|c|}{\textbf{Segmento}} & \multicolumn{2}{c|}{1}\\
+\hline
+\multicolumn{2}{|c|}{\textbf{Precondición}} & \multicolumn{2}{c|}{Devolución fuera de plazo.}\\
+\hline
+\end{tabular}
+\vskip 0.5 cm
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Curso normal de eventos}} \\
+\hline
+\multicolumn{2}{|c|}{\textbf{Actor}} & \multicolumn{2}{c|}{\textbf{Sistema}}\\
+\hline
+1 & El empleado incorpora los detalles del aviso. & 2 & Almacena el aviso.\\
+\hline
+3 & El empleado le indica al socio que tiene un aviso por retraso. & & \\
+\hline
+\end{tabular}
+\caption{Ejemplo de descripción de un caso de uso de extensión (emitir aviso)}
+\end{figure}
+
+
+Para usar correctamente estas relaciones debemos:
+\begin{itemize}
+	\item Usar relaciones de \emph{extensión} para comportamientos excepcionales, opcionales o que rara vez suceden.
+	\item Usar relaciones de \emph{inclusión} para comportamientos que se comparten entre dos o más casos de uso, o bien para separar un caso de uso en subunidades.
+\end{itemize}
+
+\paragraph{Relación de generalización}
+
+\begin{itemize}
+	\item Es una relación entre un caso de uso general (\emph{padre}) y otros más especializados (\emph{hijos}).
+	\item Los casos de uso hijos:
+		\begin{itemize}
+			\item Heredan todas las características del caso de uso general.
+			\item Pueden añadir nuevas características.
+			\item Pueden anular o reescribir características del caso de uso general, salvo relaciones, puntos de extensión y precondiciones.
+		\end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.35]{notacion_generalizacion.png}
+\caption{Notación UML de la relación de generalización.}
+\end{figure}
+
+En cuanto a la descripción de los casos de uso hijos no hay diferencia con respecta a cualquier otro caso de uso.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{generalizacion_ej.png}
+\caption{Ejemplo de generalización.}
+\end{figure}
+
+\paragraph{Recomendaciones de uso de las relaciones entre casos de uso}
+
+\begin{itemize}
+	\item Usar las relaciones entre casos de uso cuando \emph{simplifiquen el modelo}.
+	\item Un sencillo modelo de casos de uso es preferible a uno con demasiadas relaciones, ya que son más fáciles de entender.
+	\item El uso de muchas relaciones de inclusión hace que tengamos que ver más de un caso de uso para tener una idea completa.
+	\item Las relaciones de extensión son complejas y difícules de entender por la comunidad de usuarios y clientes.
+	\item La \emph{generalización} de casos de uso debería evitarse.
+\end{itemize}
 \subsubsection{Proceso de construcción del modelo de Casos de Uso}
 
+Los pasos a seguir son los siguientes:
+\begin{enumerate}
+	\item Identificar actores (\emph{principales} y secundarios).
+	\item Identificar los principales casos de uso de cada actor, identificando sus objetivos y necesidades, para lo que nos preguntamos:
+		\begin{enumerate}
+			\item ¿Cuáles son las \emph{tareas principales} que realiza cada actor?
+			\item ¿Qué \emph{información del sistema} debe adquirir, producir o cambiar?
+			\item ¿El actor tiene que informar sobre cambios producidos en el \emph{exterior del sistema}?
+			\item ¿Qué información desea \emph{adquirir} el actor del sistema?
+			\item ¿Desea el actor ser informado de \emph{cambios producidos} en el sistema?
+		\end{enumerate}
+	\item Identificar nuevos casos de uso a partir de los existentes, para lo que se deben analizar las siguientes situaciones:
+		\begin{enumerate}
+			\item Variaciones significativas de los casos de uso existentes.
+			\item Acciones opuestas $\rightarrow$ casos de uso opuestos a los existentes.
+			\item Acciones que deben realizarse antes o después de un caso de uso existente.
+		\end{enumerate}
+		\item Elaborar los diagramas de casos de uso y de paquetes en los que se muestren las relaciones lógicas entre diagramas de casos de uso.
+		\item Confeccionar la descripción básica de cada caso de uso.
+		\item Definir prioridades y seleccionar casos de uso primarios, teniendo en cuenta:
+			\begin{itemize}
+				\item Requisitos imprescindibles.
+				\item Requisitos importantes.
+				\item Requisitos deseables.
+			\end{itemize}
+		\item Realizar la descripción extendida de cada caso de uso.
+		\item Elaborar los diagramas de actividad.
+		\item Desarrollar prototipos de la interfaz de usuario.
+\end{enumerate}
 \subsubsection{Otros aspectos del modelo de Casos de Uso}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\paragraph{Diagrama de paquetes}
+Es un diagrama UML usado para describir la estructura de un sistema mediante agrupaciones lógicas. También muestra las dependencias entre estas agrupaciones.\\
+El diagrama de paquetes se utiliza en el modelado de casos de uso para agrupar de forma lógica los distintos diagramas de casos de uso.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{diagrama_paquetes.png}
+\caption{Diagrama de paquetes.}
+\end{figure}
+
+\paragraph{Diagrama de actividad}
+
+Es un diagrama UML que describe el comportamiento que tienen una serie de tareas o procesos. Representan:
+\begin{itemize}
+	\item Los flujos de actividades de los procesos de negocio de una empresa.
+	\item Los flujos de acciones de uno o varios casos de uso de forma gráfica.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{diagrama_actividad.png}
+\caption{Diagrama de actividad.}
+\end{figure}
+
+\newpage
 
 
 
