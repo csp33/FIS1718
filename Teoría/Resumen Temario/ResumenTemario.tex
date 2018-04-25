@@ -1617,7 +1617,198 @@ Es un diagrama UML que describe el comportamiento que tienen una serie de tareas
 
 \newpage
 
+\subsection{Análisis y especificación de requisitos}
 
+\subsubsection{Introducción}
+
+El proceso de análisis se ha usado tradicionalmente como un sinónimo de \emph{Ingeniería de Requisitos}. Sin embargo, en realidad se trata de una de sus fases, en la que hay que:
+
+\begin{itemize}
+	\item Descubrir los conflictos existentes entre los requisitos.
+	\item Profundizar en el conocimiento del sistema (realizando modelos que sirvan de base para el diseño e implementación y sean más fáciles de entender por desarrolladores).
+	\item Aumentar la formalización del conocimiento existente sobre el sistema para facilitar el mantenimiento.
+\end{itemize}
+
+El objetivo principal del análisis es refinar, estructurar y describir los requisitos para conseguir una comprensión más precisa y fácil de mantener que nos ayude a estructurar el sistema completo mediante modelos de análisis. Es importante rastrear los requisitos de usuario a través de los requisitos del software.
+
+\paragraph{Ejemplo de estudio de soluciones.\\}
+
+\textbf{Problema}. Llevar un control de los productos que se tienen en un almacén y realizar pedidos cuando sea necesario.\\
+
+Posibles soluciones:
+
+\begin{enumerate}
+	\item Incluir una función en el sistema para obtener un listado de las existencias del almacén de cada producto. El almacenista pedirá los productos de los que haya pocas existencias.
+	\item Incluir información sobre los mínimos necesarios para cada producto y una función para obtener un listado de los productos bajo mínimo.
+	\item Incluir información sobre los proveedores de los productos y permitir que el sistema evalue los mínimos cada cierto tiempo, generando listados con los pedidos.
+	\item Generar los pedidos por FAX de forma automática en base a la información de los proveedores y a los mínimos del almacén.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{7.5cm}|m{7.5cm}|}
+\hline
+\textbf{Modelo CU}. & \textbf{Modelo de análisis}. \\
+\hline
+Lenguaje del cliente. & Lenguaje del desarrollador.\\
+\hline
+Vista externa del sistema estructurado en CU. & Vista interna del sistema estructurado en clases y subsistemas.\\
+\hline
+Contrato cliente/desarrolladores. & Con vistas a la solución.\\
+\hline
+Puede contener redundancias e inconsistencias entre requisitos. & No debe contenerlas.\\
+\hline
+Captura la funcionalidad del sistema & Esboza cómo llevar a cabo la funcionalidad (primera aproximación a la arquitectura).
+\\
+\hline
+Se definen CU que serán analizados en mayor profundidad & Define realaciones entre casos de uso.\\
+\hline
+\end{tabular}
+\caption{Diferencias entre modelos.}
+\end{figure}
+
+\subsubsection{Análisis orientado a objetos (AOO)}
+
+El análisis orientado a objetos examina y representa los requisitos desde la perspectiva de los objetos que nos encontramos en el dominio del problema.\\
+
+Hay una gran variedad de métodos AOO, aunque todos se centran en la obtención de modelos estáticos (de estructura) y dinámicos (de comportamiento).\\
+
+El lenguaje más utilizado para representar estos modelos es UML.\\
+
+El análisis orientado a objetos se usa por los siguientes motivos:
+ 
+\begin{itemize}
+	\item Los términos usados en los modelos están cercanos a los del mundo real, por lo que facilita y mejora la obtención de requisitos y acerca el espacio del problema al de la solución.
+	\item Se modelan tanto elementos y propiedades estáticas como dinámicas.
+	\item Manejamos conceptos comunes durante el análisis, diseño e implementación del software.
+\end{itemize}
+
+\subsubsection{Modelos del AOO}
+
+\subsubsection{Modelo estático. Diagrama conceptual}
+
+\begin{itemize}
+	\item También se le conoce como diagrama de conceptos, diagrama de análisis, diagrama conceptual, modelo conceptual, modelo del dominio, etc.
+	\item En él se representan los principales conceptos del dominio del problema, sus propiedades y las relaciones entre ellos. 
+	\item El modelo de casos de uso es la base para obtener la información necesaria para el modelo estático.
+	\item Se representa mediante diagramas de UML.
+		\begin{itemize}
+			\item Clases = conceptos del dominio del problema.
+			\item Asociaciones entre conceptos.
+			\item Generalizaciones de conceptos.
+			\item Atributos de los conceptos.
+		\end{itemize}
+\end{itemize}
+
+Los pasos que hay que seguir para su obtención son los siguientes:
+
+\begin{enumerate}
+	\item Identificar e incorporar \textbf{conceptos}.
+	\item Identificar e incorporar \textbf{asociaciones} entre conceptos.
+	\item Identificar e incorporar \textbf{generalizaciones} de conceptos.
+	\item Identificar e incorporar \textbf{atributos} de conceptos.
+	\item Estructurar y empaquetar el modelo.
+	\end{enumerate}
+	
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{ejemplo_estatico.png}
+\caption{Ejemplo de modelo estático.}
+\end{figure}
+
+\subsubsection{Modelo de comportamiento}
+
+Es un estudio adicional del dominio del problema en el que añadimos los requisitos funcionales al modelo del análisis.
+\paragraph{Diagramas de secuencia del sistema (DSS).\\}
+
+Es un diagrama de secuencia UML en el que sde muestran como los eventos generados por los actores van a provocar la ejecución de una operación por el Sistema, siendo visto como una caja negra.
+
+Para elaborarlos debemos seguir los siguientes pasos:
+
+\begin{enumerate}
+	\item Identificar los \textbf{actores} que inician dichas operaciones.
+	\item Asignar un nombre a todo el sistema.
+	\item Identificar y nombrar las operaciones principales del sistema de las descripciones de los casos de uso.
+	\item Ver cuales serían los parámetros de las operaciones.
+	\item Representarlas en el diagrama de secuencia del sistema (DSS).
+	\item Incluir las operaciones en la clase que identifica a todo el sistema del diagrama conceptual.
+\end{enumerate}
+
+Podemos tener un DSS para cada CU, un solo DSS con todas las operaciones del sistema o bien un DSS por cada diagrama de CU.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.65]{ejemplo_dss.png}
+\caption{Ejemplo de diagrama de secuencia.}
+\end{figure}
+
+\paragraph{Contratos.\\}
+
+Un contrato es un documento que describe lo que una operación se propone lograr sin decir como se conseguirá. Es decir, define la especificación de una operación sin entrar en su implementación.\\
+
+La plantilla de un contrato es la siguiente:
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{7.5cm}|m{7.5cm}|}
+\hline
+\textbf{Nombre} & Nombre de la operación y sus parámetros.\\
+\hline
+\textbf{Responsabilidad} & Descripción informal de las responsabilidades que debe cumplir la operación.\\
+\hline
+\textbf{Tipo} & Concepto, clase o interfaz responsable de la operación. \\
+\hline
+\textbf{Notas} & Notas de diseño, algoritmo, etc.  \\
+\hline
+\textbf{Excepciones} & Casos excepcionales. \\
+\hline
+\textbf{Salida} & Mensajes o datos que proporciona.\\
+\hline
+\textbf{Precondiciones} & Suposición acerca del estado del sistema antes de ejecutar la operación.\\
+\hline
+\textbf{Poscondiciones} & Estado del sistema al terminar la operación. Creación y destrucción de objetos/enlaces, modificación de atributos, etc.\\
+\hline
+\end{tabular}
+\caption{Plantilla de contrato.}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{7.5cm}|m{7.5cm}|}
+\hline
+\textbf{Nombre} & \textbf{definirProyecto}(idProfesor,titulo,
+descripcion,numeroAlumnas,listIdAsig)\\
+\hline
+\textbf{Responsabilidad} & Crea un nuevo proyecto inicializando su estado y asignándole el profesor que lo define y las asignaturas recomendadas.\\
+\hline
+\textbf{Tipo} & SAP\\
+\hline
+\textbf{Notas} &  \\
+\hline
+\textbf{Excepciones} & 
+\begin{itemize}
+	\item Si el profesor identificado por idProfesor no existe.
+	\item Si algunas de las asignaturas identificadas por alguno de los elementos de listaIdAsig no existe.
+\end{itemize} \\
+\hline
+\textbf{Salida} &\\
+\hline
+\textbf{Precondiciones} & \\
+\hline
+\textbf{Poscondiciones} & 
+\begin{itemize}
+	\item Fue creado un objeto, \emph{pro}, de la clase Proyecto debidamente inicializado.
+	\item Fue creado un enlace entre \emph{pro} y el objeto Profesor, identificado por idProfesor.
+	\item Para todos los elementos de 
+	listaIdAsig:
+	\item \quad Fue creado un enlace entre \emph{pro} y el objeto de la clase Asignatura identificado por el correspondiente elemento de listaIdAsig.
+\end{itemize}
+\\
+\hline
+\end{tabular}
+\caption{Ejemplo de contrato.}
+\end{figure}
 
 
 \end{document}
