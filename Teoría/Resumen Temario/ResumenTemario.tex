@@ -23,7 +23,7 @@
 \selectlanguage{spanish}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage[a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
 
 
 \title{Arquitectura de Computadores}
@@ -1809,6 +1809,214 @@ descripcion,numeroAlumnas,listIdAsig)\\
 \end{tabular}
 \caption{Ejemplo de contrato.}
 \end{figure}
+
+\newpage
+
+\section{Tema 3. Diseño e implementación}
+
+\subsection{Introducción al diseño}
+
+\subsubsection{Definición y características}
+
+EL \textbf{diseño} es el proceso de aplicar distintos métodos, herramientas y principios con el propósito de definir un dispositivo, proceso o sistema con los suficientes detalles como para permitir su relización física.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{diseno.png}
+\caption{Diseño.}
+\end{figure}
+
+El \textbf{diseño del software} es el proceso de aplicar métodos, herramientas y principios de diseño para traducir el modelo de análisis a una representación del software que pueda ser codificada (modelo del diseño).
+
+\begin{itemize}
+	\item El diseño implica una \textbf{propuesta de solución} al problema especificado durante el análisis.
+	\item Es una \textbf{actividad creativa} apoyada en la experiencia del diseñador.
+	\item Está apoyado por principios, técnicas, herramientas, etc.
+	\item Es una tarea \textbf{clave} para la calidad del producto software.
+	\item Es la \textbf{base} para el resto de las etapas del desarrollo.
+	\item Debe ser un proceso de \textbf{refinamiento}.
+	\item El diseño garantiza que un programa funcione correctamente (\emph{hacer que un programa funcione $\neq$ hacer que funcione correctamente)}.
+\end{itemize}
+
+\subsubsection{Principios de diseño}
+
+El diseño se basa en cuatro principios fundamentales: \textbf{modularidad}, \textbf{abstracción}, \textbf{ocultamiento de información} e \textbf{independencia modular}.
+
+
+\paragraph{Modularidad\\}
+
+Consiste en aplicar la estrategia \emph{divide y vencerás}. Un sistema software está formado por piezas (módulos) que encajan perfectamente e interactúan entre sí para llevar a cabo algún objetivo común.\\
+
+Un \textbf{módulo sofware} es una unidad básica de descomposición de un sistema software y representa una entidad o funcionamiento específico. Pueden ser funciones, clases, paquetes, etc.\\
+
+Las ventajas de la modularidad son:
+
+\begin{itemize}
+	\item Los módulos son más fáciles de documentar que todo el sistema.
+	\item Facilitan los cambios.
+	\item Reducen la complejidad.
+	\item Son más fáciles de implementar.
+	\item Posibilitan el desarrollo en paralelo.
+	\item Permiten la prueba independiente.
+	\item Facilitan el encapsulamiento.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{modularidad_graf.png}
+\caption{Gráfico adecuado de modularidad.}
+\end{figure}
+
+\paragraph{Abstracción\\}
+
+Es un mecanismo que permite determinar lo que es relavante y lo que no en un nivel de detalle determinado, ayudando a obtener la modularidad necesaria para ese nivel de detalle.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{abstraccion.png}
+\caption{Abstracción.}
+\end{figure}
+
+Existen tres mecanismos fundamentales de abstracción en el diseño: \textbf{procedimental}, \textbf{de datos} y \textbf{de control}. \\
+
+El proceso de ir incorporando detalles al diseño conforme vayamos bajando el nivel de abstracción se denomina \textbf{refinamiento}.
+
+\begin{itemize}
+	\item \textbf{Abstracción procedimental}. Consiste en abstraerse sobre el funcionamiento para conseguir una estructura modular basada en procedimientos (métodos).
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{procedimental.png}
+	\caption{Abstracción procedimental.}
+	\end{figure}
+	\item \textbf{Abstracción de datos}. Se abstrae tanto el funcionamiento como los atributos que definen el estado de una entidad, obteniendo una estructura modular basada en el estado y el funcionamiento de un objeto o entidad (se añaden variables).
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{datos.png}
+	\caption{Abstracción de datos.}
+	\end{figure}
+	\item \textbf{Abstracción de control}. Permikte abstraer sobre el flujo de control de cualquier proceso (definición de los métodos).
+\end{itemize}
+
+\paragraph{Ocultamiento de información\\}
+
+Un módulo debe especificarse y diseñarse de forma que la información (procedimientos y datos) que está dentro del módulo sea inaccesible para otros módulos que no la necesiten.\\
+
+Las ventajas del ocultamiento de información son:
+
+\begin{itemize}
+	\item Reduce la posibilidad de efectos colaterales.
+	\item Limita el impacto global de las decisiones de diseño locales.
+	\item Enfatiza la comunicación a través de interfaces controladas.
+	\item Disminuye el uso de datos globales.
+	\item Potencia la modularidad.
+	\item Produce software de alta calidad.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{ocultamiento.png}
+\caption{Ocultamiento de información.}
+\end{figure}
+
+\paragraph{Independencia modular\\}
+
+La independencia modular se mide en dos parámetros: \textbf{cohesión} y \textbf{acoplamiento}:
+
+\begin{itemize}
+	\item \textbf{Cohesión}. Grado que tiene un módulo en la realización de \emph{un solo objetivo}. Un módulo debe presentar un alto nivel de cohesión, ya que hace que sea más fácil de entender, reutilizar y mantener.
+	\item \textbf{Acoplamiento}. Mide la interdependencia entre módulos dentro de una estructura de software. Un módulo debe presentar un nivel de acoplamiento lo más bajo posible con respecto a los demás módulos. 
+\end{itemize}
+
+\subsubsection{Herramientas de diseño}
+
+Las \textbf{herramientas de diseño} son los instrumentos que ayudan a representar los modelos de diseño del software. Algunas de las más usadas son:
+\begin{itemize}
+	\item Diagramas UML (de clase, de interacción, de paquetes, etc.).
+	\item Cartas de estructura.
+	\item Tablas de decisión.
+	\item Diagramas de flujo de control.
+	\item Lenguajes de diseño de programas (LDP).
+\end{itemize}
+\newpage
+\subsubsection{Métodos de diseño}
+
+Un \textbf{método de diseño} permite obtener diseños de forma sistemática, proporcionando las herramientas, técnicas y pasos a seguir para llevar a cabo del diseño. Todo método de diseño debe poseer:
+\begin{itemize}
+	\item \textbf{Principios} en los que se basa.
+	\item \textbf{Mecanismos de traducción} del modelo de análisis al modelo de diseño.
+	\item \textbf{Herramientas} que nos permitan refinar el diseño.
+	\item Criterios para \textbf{evaluar} la calidad del diseño.
+\end{itemize}
+
+\subsubsection{Modelo de diseño}
+
+
+A nivel general un modelo de diseño está formado por varios \textbf{subsistemas} de diseño junto con las interfaces que requieren o proporcionan estos subsistemas. A su vez, cada subsistema puede contener distintos tipos de elementos de modelado de diseño, principalmente \emph{realización de casos de uso-diseño} y \emph{clases de diseño}.
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.5\textwidth}
+\includegraphics[width=\textwidth]{modelo_diseno.png}
+\end{subfigure}
+\quad
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{modelo_diseno_2.png}
+\end{subfigure}
+\caption{Modelo de diseño.}
+\end{figure}
+
+El modelo de diseño puede considerarse un refinamiento del modelo de análisis en el que todos los artefactos de éste están mejor definidos e incorporan detalles técnicos que permiten su implementación.
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{7cm}|m{7cm}|}
+\hline
+\textbf{Estrategia} & \textbf{Consecuencias}\\
+\hline
+Modificar el modelo de análisis. & Se tiene solo un modelo pero se pierde la vista del análisis.\\
+\hline
+Modificar el modelo de análisis y usar una herramienta que recupere el original & Se tiene un solo modelo, pero la vista recuperada puede no ser satisfactoria.\\
+\hline
+Congelar el modelo de análisis y hacer una copia para continuar con el diseño. & Se tienen dos modelos que no van al mismo ritmo.\\
+\hline
+Mantener ambos modelos. & Se tienen dos modelos al mismo tiempo, pero hay sobrecarga de mantenimiento.\\
+\hline
+\end{tabular}
+\caption{Paso de modelo de análisis a modelo de diseño.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{correspondencia_analisis_diseno.png}
+\caption{Correspondencia entre modelo de análisis y de diseño.}
+\end{figure}
+
+
+
+
+\subsubsection{Tareas del diseño}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{tareas_diseno.png}
+\caption{Tareas del diseño.}
+\end{figure}
+
+\subsection{Diseño de los casos de uso}
+
+
+
+
+
+\subsection{Diseño de la estructura de objetos}
+
+
+
+
+
+
+\subsection{Diseño de la arquitectura}
 
 
 \end{document}
