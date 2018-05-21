@@ -1994,6 +1994,7 @@ Mantener ambos modelos. & Se tienen dos modelos al mismo tiempo, pero hay sobrec
 
 
 
+\newpage
 
 \subsubsection{Tareas del diseño}
 
@@ -2006,17 +2007,240 @@ Mantener ambos modelos. & Se tienen dos modelos al mismo tiempo, pero hay sobrec
 \subsection{Diseño de los casos de uso}
 
 
+\subsubsection{Modelo de interacción de objetos}
+
+Las herramientas para representar el modelo son los diagramas de interacción UML: el de \textbf{secuencia} y el de \textbf{comunicación}. Son semánticamente equivalentes.
+
+\subsubsection{Patrones de diseño de Craig Larman}
+
+Resuelven el problema de la asignación de responsabilidades a objetos.\\
+
+Una responsabilidad es una obligación que debe tener un objeto en su comportamiento. Todas ellas deben incluirse en alguna operación o método de la clase a la que pertenece el objeto. Las responsabilidades de un objeto pueden ser:
+
+\begin{itemize}
+	\item \textbf{Conocer}: datos privados encapsulados en él, objetos relacionados con él, cálculos que puede hacer, etc.
+	\item \textbf{Hacer}: iniciar una acción sobre sí mismo o sobre otro objeto, controlar y coordinar actividades entre objetos, etc.
+\end{itemize}
+
+Los \textbf{patrones de diseño de Craig Larman} sirven como ayuda para encontrar estas responsabilidades.\\
+
+Un \textbf{patrón de diseño} es la descripción de un problema con su solución en un contexto determinado. Sus pares importantes son:
+
+\begin{itemize}
+	\item Su \textbf{nombre}.
+	\item El \textbf{problema} que pretende solucionar.
+	\item La \textbf{solución} propuesta.
+	\item Las \textbf{consecuencias} buenas y malas que puede ocasionar su uso.
+\end{itemize}
+
+Los patrones Craig Larman son varios: \textbf{experto en información}, \textbf{creador}, \textbf{controlador}, \textbf{bajo acoplamiento}, \textbf{alta cohesión}, polimorfismo, etc.
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{5cm}|m{8cm}|}
+\hline
+\textbf{Nombre} & Experto en información\\
+\hline
+\textbf{Problema} & Complejidad en la búsqueda de información y acoplamientos fuertes entre clases en las búsquedas.\\
+\hline
+\textbf{Solución} & Asignar responsabilidad a la clase que contiene la información necesaria.\\
+\hline
+\textbf{Consecuencias} & 
+\begin{itemize}
+	\item \textbf{Buenas}: mantiene el ocultamiento de información y distribuye el comportamiento.
+	\item \textbf{Malas}: en ocasiones va en contra de los principios de acoplamiento o cohesión.
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Patrón experto en información}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{experto_inf.png}
+\caption{Ejemplo de patrón experto en información.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{5cm}|m{8cm}|}
+\hline
+\textbf{Nombre} & Creador\\
+\hline
+\textbf{Problema} & Tener acoplamientos, mala encapsulación y reutilización y poca claridad en la construcción de objetos.\\
+\hline
+\textbf{Solución} & Asignar a la clase B la responsabilidad de crear una instancia de A en caso de que agregue, contenga, registre, utilice o tenga los datos de inicialización de A\\
+\hline
+\textbf{Consecuencias} & 
+\begin{itemize}
+	\item \textbf{Buenas}: produce bajo acoplamiento.
+	\item \textbf{Malas}: no es conveniente usarlo cuando las instancias ya existen.
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Patrón creador}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{ej_creador.png}
+\caption{Ejemplo de patrón creador.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{5cm}|m{8cm}|}
+\hline
+\textbf{Nombre} & Bajo acoplamiento\\
+\hline
+\textbf{Problema} & Elementos que dependen de demasiados elementos. Una modificación conlleva demasiadas modificaciones colaterales.\\
+\hline
+\textbf{Solución} & Asignar responsabilidades de forma que tengamos elementos que dependan sólo de los elementos necesarios.\\
+\hline
+\textbf{Consecuencias} & 
+\begin{itemize}
+	\item \textbf{Buenas}: no afectan los cambios en otros elementos, son fáciles de entender de manera aislada y aumenta la reutilización.
+	\item \textbf{Malas}: si se lleva a un extremo puede ocasionar diseños pobres. El nivel de acoplamiento debe ser adecuado.
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Patrón de bajo acoplamiento}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{5cm}|m{8cm}|}
+\hline
+\textbf{Nombre} & Alta cohesión\\
+\hline
+\textbf{Problema} & Elementos con pocas tareas o con muchas pero no relacionadas. \\
+\hline
+\textbf{Solución} & Asignar responsabildiades de forma que todas las tareas de un elemento persigan un objetivo común.\\
+\hline
+\textbf{Consecuencias} & 
+\begin{itemize}
+	\item \textbf{Buenas}: el diseño es más claro, se simplifica el mantenimiento y aumenta la reutilización.
+	\item \textbf{Malas}: ninguna, sólo debemos renunciar a este patrón cuando haya un motivo de peso. 
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Patrón de alta cohesión}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{ej_alta_cohesion.png}
+\caption{Ejemplo de patrón de alta cohesión.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{5cm}|m{8cm}|}
+\hline
+\textbf{Nombre} & Controlador o fachada\\
+\hline
+\textbf{Problema} & Comunicación entre los objetos de la capa del dominio de la solución y la capa de la interfaz.\\
+\hline
+\textbf{Solución} & Asignar responsabilidades de recibir o manejar un mensaje de evento del sistema a una clase que representa al sistema global o bien al caso de uso (un controlador por cada caso de uso).\\
+\hline
+\textbf{Consecuencias} & 
+\begin{itemize}
+	\item \textbf{Buenas}: se asegura que la lógica de la aplicación no se maneja en la interfaz. Buena reutilización y bajo nivel de acoplamiento. Permite razonar sobre el estado de los casos de uso.
+	\item \textbf{Malas}: Controladores saturados.
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Patrón controlador o fachada}
+\end{figure}
+
+\newpage
+\subsubsection{Elaboración del modelo de interacción de objetos}
+
+\begin{itemize}
+	\item Las bases principales para obtener los diagramas de comunicación son los contratos y el modelo conceptual.
+	\item El modelo conceptual sirve como guía para saber qué objetos pueden interactuar en una operación.
+	\item Todo lo especificado en el contrato debe satisfacerse en el diagrama correspondiente.
+	\item Para elaborar cada diagrama podemos ayudarnos de los patrones de diseño de Craig Larman.
+\end{itemize}
+
+Los pasos a seguir son los siguientes:
+
+\begin{enumerate}
+	\item Elaborar los diagramas de interacción teniendo en cuenta el diagrama de conceptos y el contrato asociado.
+	\item Inicializar el sistema.
+	\item Establecer las relaciones entre el modelo y la interfaz de usuario.
+\end{enumerate}
 
 
 
-\subsection{Diseño de la estructura de objetos}
+\subsection{Diseño de la estructura de clases}
 
 
+\subsubsection{Modelo de estructura de objetos: diagrama de clases del diseño}
 
+Un diagrama de clases del diseño describe gráficamente las especificaciones de las clases e interfaces software y las relaciones entre éstas en una aplicación. A diferencia del modelo conceptual, representa la solución a nuestro problema. Puede contener los siguientes elementos:
+\begin{itemize}
+	\item Clases con sus atributos y sus operaciones.
+	\item Interfaces con sus operaciones y constantes.
+	\item Relaciones entre clases, interfaces o clases e interfaces.
+	\item Información sobre el tipo de los atributos y parámetros.
+	\item Navegabilidad de las asociaciones.
+\end{itemize}
 
+Se representan mediante un diagrama de clases UML.\\
 
+\subsubsection{Proceso de elaboración del diagrama de clases del diseño}
+
+Los pasos a seguir para elaborar el diagrama son los siguientes:
+
+\begin{enumerate}
+	\item Identificar y representar las clases. Todos los objetos de los diagramas comunicación tendrán su correspondiente clase. Tomarán los atributos del modelo conceptual ey de los diagramas de comunicación.
+	\item Añadir las operaciones. Todos los envíos de mensajes deben tener su operación en la clase correspondiente.
+	\item Añadir los tipos de atributos y los parámetros.
+	\item Incluir las asociaciones y la navegabilidad.
+	\item Incluir las dependencias.
+\end{enumerate}
 
 \subsection{Diseño de la arquitectura}
+
+
+\subsubsection{Conceptos de diseño de la arquitectura}
+
+El \textbf{diseño de la arquitectura} proporcionará una imagen global de la estructura del sistema software, esbozando los artefactos más importantes que lo componen (principalmente subsistemas y sus interfaces).\\
+
+Determinar la arquitectura del software consiste en tomar decisiones respecto a:
+\begin{itemize}
+	\item Cómo se dividirá el sistema en subsistemas.
+	\item Cómo deberán interactuar dichos subsistemas.
+	\item Cuál será la interfaz de cada subsistema.
+	\item Cuándo será el estilo arquitectónico usado.
+\end{itemize}
+
+La arquitectura es muy importante debido a que:
+\begin{itemize}
+	\item Facilita la comprensión de la estructura global del sistema.
+	\item Permite trabajar en los subsistemas de forma independiente.
+	\item Facilita las posibles extensiones del sistema.
+	\item Facilita la reutilización de los distintos subsistemas.
+\end{itemize}
+
+
+\subsubsection{Herramientas para su representación}
+
+\begin{itemize}
+	\item \textbf{Diagrama de paquetes}. Describe el sistema en torno a agrupaciones lógicas y proporciona una primera estructura.
+	\item \textbf{Diagrama de compontentes}. Representa una estructuración concreta del sistema a partir de los sistemas (componentes software) y su correspondiente interfaz (interrelación)
+	\item \textbf{Diagrama de despliegue}. Especifica el hardware físico sobre el que se ejecutará el sistema software y cómo cada uno de los subsistemas software se despliega en ese hardware.
+\end{itemize}
+
+
+\subsubsection{Estilos arquitectónicos}
+
+Un estilo arquitectónico proporciona un conjunto de subsistemas predefinidos, especificando sus responsabilidades e incluyendo reglas y guías para organizar las relaciones entre ellos. No proporcionan la arquitectura del sistema, sino una guía para obtenerla.
+
+
+
+\subsubsection{Actividades del diseño arquitectónico}
 
 
 \end{document}
