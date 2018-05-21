@@ -23,7 +23,7 @@
 \selectlanguage{spanish}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage[a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
 
 
 \title{Arquitectura de Computadores}
@@ -1809,6 +1809,438 @@ descripcion,numeroAlumnas,listIdAsig)\\
 \end{tabular}
 \caption{Ejemplo de contrato.}
 \end{figure}
+
+\newpage
+
+\section{Tema 3. Diseño e implementación}
+
+\subsection{Introducción al diseño}
+
+\subsubsection{Definición y características}
+
+EL \textbf{diseño} es el proceso de aplicar distintos métodos, herramientas y principios con el propósito de definir un dispositivo, proceso o sistema con los suficientes detalles como para permitir su relización física.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{diseno.png}
+\caption{Diseño.}
+\end{figure}
+
+El \textbf{diseño del software} es el proceso de aplicar métodos, herramientas y principios de diseño para traducir el modelo de análisis a una representación del software que pueda ser codificada (modelo del diseño).
+
+\begin{itemize}
+	\item El diseño implica una \textbf{propuesta de solución} al problema especificado durante el análisis.
+	\item Es una \textbf{actividad creativa} apoyada en la experiencia del diseñador.
+	\item Está apoyado por principios, técnicas, herramientas, etc.
+	\item Es una tarea \textbf{clave} para la calidad del producto software.
+	\item Es la \textbf{base} para el resto de las etapas del desarrollo.
+	\item Debe ser un proceso de \textbf{refinamiento}.
+	\item El diseño garantiza que un programa funcione correctamente (\emph{hacer que un programa funcione $\neq$ hacer que funcione correctamente)}.
+\end{itemize}
+
+\subsubsection{Principios de diseño}
+
+El diseño se basa en cuatro principios fundamentales: \textbf{modularidad}, \textbf{abstracción}, \textbf{ocultamiento de información} e \textbf{independencia modular}.
+
+
+\paragraph{Modularidad\\}
+
+Consiste en aplicar la estrategia \emph{divide y vencerás}. Un sistema software está formado por piezas (módulos) que encajan perfectamente e interactúan entre sí para llevar a cabo algún objetivo común.\\
+
+Un \textbf{módulo sofware} es una unidad básica de descomposición de un sistema software y representa una entidad o funcionamiento específico. Pueden ser funciones, clases, paquetes, etc.\\
+
+Las ventajas de la modularidad son:
+
+\begin{itemize}
+	\item Los módulos son más fáciles de documentar que todo el sistema.
+	\item Facilitan los cambios.
+	\item Reducen la complejidad.
+	\item Son más fáciles de implementar.
+	\item Posibilitan el desarrollo en paralelo.
+	\item Permiten la prueba independiente.
+	\item Facilitan el encapsulamiento.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{modularidad_graf.png}
+\caption{Gráfico adecuado de modularidad.}
+\end{figure}
+
+\paragraph{Abstracción\\}
+
+Es un mecanismo que permite determinar lo que es relavante y lo que no en un nivel de detalle determinado, ayudando a obtener la modularidad necesaria para ese nivel de detalle.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{abstraccion.png}
+\caption{Abstracción.}
+\end{figure}
+
+Existen tres mecanismos fundamentales de abstracción en el diseño: \textbf{procedimental}, \textbf{de datos} y \textbf{de control}. \\
+
+El proceso de ir incorporando detalles al diseño conforme vayamos bajando el nivel de abstracción se denomina \textbf{refinamiento}.
+
+\begin{itemize}
+	\item \textbf{Abstracción procedimental}. Consiste en abstraerse sobre el funcionamiento para conseguir una estructura modular basada en procedimientos (métodos).
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{procedimental.png}
+	\caption{Abstracción procedimental.}
+	\end{figure}
+	\item \textbf{Abstracción de datos}. Se abstrae tanto el funcionamiento como los atributos que definen el estado de una entidad, obteniendo una estructura modular basada en el estado y el funcionamiento de un objeto o entidad (se añaden variables).
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{datos.png}
+	\caption{Abstracción de datos.}
+	\end{figure}
+	\item \textbf{Abstracción de control}. Permikte abstraer sobre el flujo de control de cualquier proceso (definición de los métodos).
+\end{itemize}
+
+\paragraph{Ocultamiento de información\\}
+
+Un módulo debe especificarse y diseñarse de forma que la información (procedimientos y datos) que está dentro del módulo sea inaccesible para otros módulos que no la necesiten.\\
+
+Las ventajas del ocultamiento de información son:
+
+\begin{itemize}
+	\item Reduce la posibilidad de efectos colaterales.
+	\item Limita el impacto global de las decisiones de diseño locales.
+	\item Enfatiza la comunicación a través de interfaces controladas.
+	\item Disminuye el uso de datos globales.
+	\item Potencia la modularidad.
+	\item Produce software de alta calidad.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{ocultamiento.png}
+\caption{Ocultamiento de información.}
+\end{figure}
+
+\paragraph{Independencia modular\\}
+
+La independencia modular se mide en dos parámetros: \textbf{cohesión} y \textbf{acoplamiento}:
+
+\begin{itemize}
+	\item \textbf{Cohesión}. Grado que tiene un módulo en la realización de \emph{un solo objetivo}. Un módulo debe presentar un alto nivel de cohesión, ya que hace que sea más fácil de entender, reutilizar y mantener.
+	\item \textbf{Acoplamiento}. Mide la interdependencia entre módulos dentro de una estructura de software. Un módulo debe presentar un nivel de acoplamiento lo más bajo posible con respecto a los demás módulos. 
+\end{itemize}
+
+\subsubsection{Herramientas de diseño}
+
+Las \textbf{herramientas de diseño} son los instrumentos que ayudan a representar los modelos de diseño del software. Algunas de las más usadas son:
+\begin{itemize}
+	\item Diagramas UML (de clase, de interacción, de paquetes, etc.).
+	\item Cartas de estructura.
+	\item Tablas de decisión.
+	\item Diagramas de flujo de control.
+	\item Lenguajes de diseño de programas (LDP).
+\end{itemize}
+\newpage
+\subsubsection{Métodos de diseño}
+
+Un \textbf{método de diseño} permite obtener diseños de forma sistemática, proporcionando las herramientas, técnicas y pasos a seguir para llevar a cabo del diseño. Todo método de diseño debe poseer:
+\begin{itemize}
+	\item \textbf{Principios} en los que se basa.
+	\item \textbf{Mecanismos de traducción} del modelo de análisis al modelo de diseño.
+	\item \textbf{Herramientas} que nos permitan refinar el diseño.
+	\item Criterios para \textbf{evaluar} la calidad del diseño.
+\end{itemize}
+
+\subsubsection{Modelo de diseño}
+
+
+A nivel general un modelo de diseño está formado por varios \textbf{subsistemas} de diseño junto con las interfaces que requieren o proporcionan estos subsistemas. A su vez, cada subsistema puede contener distintos tipos de elementos de modelado de diseño, principalmente \emph{realización de casos de uso-diseño} y \emph{clases de diseño}.
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.5\textwidth}
+\includegraphics[width=\textwidth]{modelo_diseno.png}
+\end{subfigure}
+\quad
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{modelo_diseno_2.png}
+\end{subfigure}
+\caption{Modelo de diseño.}
+\end{figure}
+
+El modelo de diseño puede considerarse un refinamiento del modelo de análisis en el que todos los artefactos de éste están mejor definidos e incorporan detalles técnicos que permiten su implementación.
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{7cm}|m{7cm}|}
+\hline
+\textbf{Estrategia} & \textbf{Consecuencias}\\
+\hline
+Modificar el modelo de análisis. & Se tiene solo un modelo pero se pierde la vista del análisis.\\
+\hline
+Modificar el modelo de análisis y usar una herramienta que recupere el original & Se tiene un solo modelo, pero la vista recuperada puede no ser satisfactoria.\\
+\hline
+Congelar el modelo de análisis y hacer una copia para continuar con el diseño. & Se tienen dos modelos que no van al mismo ritmo.\\
+\hline
+Mantener ambos modelos. & Se tienen dos modelos al mismo tiempo, pero hay sobrecarga de mantenimiento.\\
+\hline
+\end{tabular}
+\caption{Paso de modelo de análisis a modelo de diseño.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{correspondencia_analisis_diseno.png}
+\caption{Correspondencia entre modelo de análisis y de diseño.}
+\end{figure}
+
+
+
+\newpage
+
+\subsubsection{Tareas del diseño}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{tareas_diseno.png}
+\caption{Tareas del diseño.}
+\end{figure}
+
+\subsection{Diseño de los casos de uso}
+
+
+\subsubsection{Modelo de interacción de objetos}
+
+Las herramientas para representar el modelo son los diagramas de interacción UML: el de \textbf{secuencia} y el de \textbf{comunicación}. Son semánticamente equivalentes.
+
+\subsubsection{Patrones de diseño de Craig Larman}
+
+Resuelven el problema de la asignación de responsabilidades a objetos.\\
+
+Una responsabilidad es una obligación que debe tener un objeto en su comportamiento. Todas ellas deben incluirse en alguna operación o método de la clase a la que pertenece el objeto. Las responsabilidades de un objeto pueden ser:
+
+\begin{itemize}
+	\item \textbf{Conocer}: datos privados encapsulados en él, objetos relacionados con él, cálculos que puede hacer, etc.
+	\item \textbf{Hacer}: iniciar una acción sobre sí mismo o sobre otro objeto, controlar y coordinar actividades entre objetos, etc.
+\end{itemize}
+
+Los \textbf{patrones de diseño de Craig Larman} sirven como ayuda para encontrar estas responsabilidades.\\
+
+Un \textbf{patrón de diseño} es la descripción de un problema con su solución en un contexto determinado. Sus pares importantes son:
+
+\begin{itemize}
+	\item Su \textbf{nombre}.
+	\item El \textbf{problema} que pretende solucionar.
+	\item La \textbf{solución} propuesta.
+	\item Las \textbf{consecuencias} buenas y malas que puede ocasionar su uso.
+\end{itemize}
+
+Los patrones Craig Larman son varios: \textbf{experto en información}, \textbf{creador}, \textbf{controlador}, \textbf{bajo acoplamiento}, \textbf{alta cohesión}, polimorfismo, etc.
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{5cm}|m{8cm}|}
+\hline
+\textbf{Nombre} & Experto en información\\
+\hline
+\textbf{Problema} & Complejidad en la búsqueda de información y acoplamientos fuertes entre clases en las búsquedas.\\
+\hline
+\textbf{Solución} & Asignar responsabilidad a la clase que contiene la información necesaria.\\
+\hline
+\textbf{Consecuencias} & 
+\begin{itemize}
+	\item \textbf{Buenas}: mantiene el ocultamiento de información y distribuye el comportamiento.
+	\item \textbf{Malas}: en ocasiones va en contra de los principios de acoplamiento o cohesión.
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Patrón experto en información}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{experto_inf.png}
+\caption{Ejemplo de patrón experto en información.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{5cm}|m{8cm}|}
+\hline
+\textbf{Nombre} & Creador\\
+\hline
+\textbf{Problema} & Tener acoplamientos, mala encapsulación y reutilización y poca claridad en la construcción de objetos.\\
+\hline
+\textbf{Solución} & Asignar a la clase B la responsabilidad de crear una instancia de A en caso de que agregue, contenga, registre, utilice o tenga los datos de inicialización de A\\
+\hline
+\textbf{Consecuencias} & 
+\begin{itemize}
+	\item \textbf{Buenas}: produce bajo acoplamiento.
+	\item \textbf{Malas}: no es conveniente usarlo cuando las instancias ya existen.
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Patrón creador}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{ej_creador.png}
+\caption{Ejemplo de patrón creador.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{5cm}|m{8cm}|}
+\hline
+\textbf{Nombre} & Bajo acoplamiento\\
+\hline
+\textbf{Problema} & Elementos que dependen de demasiados elementos. Una modificación conlleva demasiadas modificaciones colaterales.\\
+\hline
+\textbf{Solución} & Asignar responsabilidades de forma que tengamos elementos que dependan sólo de los elementos necesarios.\\
+\hline
+\textbf{Consecuencias} & 
+\begin{itemize}
+	\item \textbf{Buenas}: no afectan los cambios en otros elementos, son fáciles de entender de manera aislada y aumenta la reutilización.
+	\item \textbf{Malas}: si se lleva a un extremo puede ocasionar diseños pobres. El nivel de acoplamiento debe ser adecuado.
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Patrón de bajo acoplamiento}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{5cm}|m{8cm}|}
+\hline
+\textbf{Nombre} & Alta cohesión\\
+\hline
+\textbf{Problema} & Elementos con pocas tareas o con muchas pero no relacionadas. \\
+\hline
+\textbf{Solución} & Asignar responsabildiades de forma que todas las tareas de un elemento persigan un objetivo común.\\
+\hline
+\textbf{Consecuencias} & 
+\begin{itemize}
+	\item \textbf{Buenas}: el diseño es más claro, se simplifica el mantenimiento y aumenta la reutilización.
+	\item \textbf{Malas}: ninguna, sólo debemos renunciar a este patrón cuando haya un motivo de peso. 
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Patrón de alta cohesión}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{ej_alta_cohesion.png}
+\caption{Ejemplo de patrón de alta cohesión.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|m{5cm}|m{8cm}|}
+\hline
+\textbf{Nombre} & Controlador o fachada\\
+\hline
+\textbf{Problema} & Comunicación entre los objetos de la capa del dominio de la solución y la capa de la interfaz.\\
+\hline
+\textbf{Solución} & Asignar responsabilidades de recibir o manejar un mensaje de evento del sistema a una clase que representa al sistema global o bien al caso de uso (un controlador por cada caso de uso).\\
+\hline
+\textbf{Consecuencias} & 
+\begin{itemize}
+	\item \textbf{Buenas}: se asegura que la lógica de la aplicación no se maneja en la interfaz. Buena reutilización y bajo nivel de acoplamiento. Permite razonar sobre el estado de los casos de uso.
+	\item \textbf{Malas}: Controladores saturados.
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Patrón controlador o fachada}
+\end{figure}
+
+\newpage
+\subsubsection{Elaboración del modelo de interacción de objetos}
+
+\begin{itemize}
+	\item Las bases principales para obtener los diagramas de comunicación son los contratos y el modelo conceptual.
+	\item El modelo conceptual sirve como guía para saber qué objetos pueden interactuar en una operación.
+	\item Todo lo especificado en el contrato debe satisfacerse en el diagrama correspondiente.
+	\item Para elaborar cada diagrama podemos ayudarnos de los patrones de diseño de Craig Larman.
+\end{itemize}
+
+Los pasos a seguir son los siguientes:
+
+\begin{enumerate}
+	\item Elaborar los diagramas de interacción teniendo en cuenta el diagrama de conceptos y el contrato asociado.
+	\item Inicializar el sistema.
+	\item Establecer las relaciones entre el modelo y la interfaz de usuario.
+\end{enumerate}
+
+
+
+\subsection{Diseño de la estructura de clases}
+
+
+\subsubsection{Modelo de estructura de objetos: diagrama de clases del diseño}
+
+Un diagrama de clases del diseño describe gráficamente las especificaciones de las clases e interfaces software y las relaciones entre éstas en una aplicación. A diferencia del modelo conceptual, representa la solución a nuestro problema. Puede contener los siguientes elementos:
+\begin{itemize}
+	\item Clases con sus atributos y sus operaciones.
+	\item Interfaces con sus operaciones y constantes.
+	\item Relaciones entre clases, interfaces o clases e interfaces.
+	\item Información sobre el tipo de los atributos y parámetros.
+	\item Navegabilidad de las asociaciones.
+\end{itemize}
+
+Se representan mediante un diagrama de clases UML.\\
+
+\subsubsection{Proceso de elaboración del diagrama de clases del diseño}
+
+Los pasos a seguir para elaborar el diagrama son los siguientes:
+
+\begin{enumerate}
+	\item Identificar y representar las clases. Todos los objetos de los diagramas comunicación tendrán su correspondiente clase. Tomarán los atributos del modelo conceptual ey de los diagramas de comunicación.
+	\item Añadir las operaciones. Todos los envíos de mensajes deben tener su operación en la clase correspondiente.
+	\item Añadir los tipos de atributos y los parámetros.
+	\item Incluir las asociaciones y la navegabilidad.
+	\item Incluir las dependencias.
+\end{enumerate}
+
+\subsection{Diseño de la arquitectura}
+
+
+\subsubsection{Conceptos de diseño de la arquitectura}
+
+El \textbf{diseño de la arquitectura} proporcionará una imagen global de la estructura del sistema software, esbozando los artefactos más importantes que lo componen (principalmente subsistemas y sus interfaces).\\
+
+Determinar la arquitectura del software consiste en tomar decisiones respecto a:
+\begin{itemize}
+	\item Cómo se dividirá el sistema en subsistemas.
+	\item Cómo deberán interactuar dichos subsistemas.
+	\item Cuál será la interfaz de cada subsistema.
+	\item Cuándo será el estilo arquitectónico usado.
+\end{itemize}
+
+La arquitectura es muy importante debido a que:
+\begin{itemize}
+	\item Facilita la comprensión de la estructura global del sistema.
+	\item Permite trabajar en los subsistemas de forma independiente.
+	\item Facilita las posibles extensiones del sistema.
+	\item Facilita la reutilización de los distintos subsistemas.
+\end{itemize}
+
+
+\subsubsection{Herramientas para su representación}
+
+\begin{itemize}
+	\item \textbf{Diagrama de paquetes}. Describe el sistema en torno a agrupaciones lógicas y proporciona una primera estructura.
+	\item \textbf{Diagrama de compontentes}. Representa una estructuración concreta del sistema a partir de los sistemas (componentes software) y su correspondiente interfaz (interrelación)
+	\item \textbf{Diagrama de despliegue}. Especifica el hardware físico sobre el que se ejecutará el sistema software y cómo cada uno de los subsistemas software se despliega en ese hardware.
+\end{itemize}
+
+
+\subsubsection{Estilos arquitectónicos}
+
+Un estilo arquitectónico proporciona un conjunto de subsistemas predefinidos, especificando sus responsabilidades e incluyendo reglas y guías para organizar las relaciones entre ellos. No proporcionan la arquitectura del sistema, sino una guía para obtenerla.
+
+
+
+\subsubsection{Actividades del diseño arquitectónico}
 
 
 \end{document}
