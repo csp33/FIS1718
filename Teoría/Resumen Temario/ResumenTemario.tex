@@ -1992,10 +1992,6 @@ Mantener ambos modelos. & Se tienen dos modelos al mismo tiempo, pero hay sobrec
 \caption{Correspondencia entre modelo de análisis y de diseño.}
 \end{figure}
 
-
-
-\newpage
-
 \subsubsection{Tareas del diseño}
 
 \begin{figure}[H]
@@ -2153,7 +2149,6 @@ Los patrones Craig Larman son varios: \textbf{experto en información}, \textbf{
 \caption{Patrón controlador o fachada}
 \end{figure}
 
-\newpage
 \subsubsection{Elaboración del modelo de interacción de objetos}
 
 \begin{itemize}
@@ -2238,9 +2233,208 @@ La arquitectura es muy importante debido a que:
 
 Un estilo arquitectónico proporciona un conjunto de subsistemas predefinidos, especificando sus responsabilidades e incluyendo reglas y guías para organizar las relaciones entre ellos. No proporcionan la arquitectura del sistema, sino una guía para obtenerla.
 
+\paragraph{Arquitectura multicapa\\}
 
+Distribuye los subsistemas en capas, de forma que:
+\begin{itemize}
+	\item Cada capa presta servicios a la capa superior y actúa como cliente sobre las capas más internas.
+	\item El diseño incluye los protocolos que establecen cómo interactuará cada par de capas.
+	\item Las capas más claras proporcionan servicio de bajo nivel (comunicación en red, acceso a bases de datos, etc.)
+\end{itemize}
+
+Sus principales ventajas son:
+
+\begin{itemize}
+	\item Cada capa puede diseñarse, implementarse y probarse de forma independiente.
+	\item La arquitectura es fácilmente portable: podemos cambiar una capa si mantenemos la interfaz y los cambios en la interfaz sólo afectan a la capa adyacente.
+\end{itemize}
+
+Sus principales ventajas son la dificultad para determinar los servicios de cada capa y la pérdida de rendimiento debida a los múltiples niveles que hay que pasar para completar una petición.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{multicapa.png}
+\caption{Arquitectura multicapa.}
+\end{figure}
+
+\begin{itemize}
+	\item Las capas pueden diseñarse, construirse y probarse de forma \textbf{independiente}.
+	\item Una capa bien diseñada tiene \textbf{alta cohesión}.
+	\item Las capas deben estar lo más desacopladas posible.
+	\item Una capa de un nivel no debe tener conocimiento de las capas superiores (\textbf{ocultamiento de información}).
+	\item Las capas más inferiores deben prestar servicios de bajo nivel (\textbf{bajo acoplamiento}).
+\end{itemize}
+
+\paragraph{Arquitectura cliente-servidor\\}
+
+Están compuestas por:
+
+\begin{itemize}
+	\item \textbf{Servidores} independientes que ofrecen servicios a otros subsistemas.
+	\item \textbf{Clientes} que pueden solicitar estos servicios.
+	\item \textbf{Red} que permite a los clientes realizar peticiones a los servidores.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{cliente-servidor.png}
+\caption{Arquitectura cliente-servidor.}
+\end{figure}
+
+Las capas fundamentales son: de presentación (\textbf{clientes}) y procesamiento de aplicación y administración de datos (\textbf{servidores}).
+
+\begin{itemize}
+	\item la descomposición en clientes y servidores permite realizar el diseño de ambas partes de forma \textbf{independiente}.
+	\item Mejora la \textbf{cohesión} de los subsistemas al proporcionar servicios específicos a los clientes.
+	\item Reduce el \textbf{acoplamiento} al establecer la red de comunicación.
+	\item Aumenta el nivel de \textbf{abstracción} al tener subsistemas o componentes distribuidos en nodos separados.
+	\item Facilita la \textbf{reutilización}.
+	\item Los sistemas distribuidos pueden \textbf{reconfigurarse fácilmente} añadiendo servidores o clientes extras.
+	 \item Pueden escribirse clientes para nuevas plataformas sin modificar los servidores.
+\end{itemize}
+
+\paragraph{Arquitectura de repositorio\\}
+
+Los datos se ubican en una base de datos central a la que acceden todos los subsistemas. Los repositorios pueden ser activos o pasivos.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{repositorio.png}
+\caption{Arquitectura de repositorio.}
+\end{figure}
+
+Sus principales ventajas son:
+
+\begin{itemize}
+	\item Es una forma eficiente de compartir grandes cantidades de datos.
+	\item Los subsistemas productores de datos no necesitan saber de los consumidores.
+	\item Seguridad, control de acceso y recuperación de datos están centralizadas.
+\end{itemize}
+
+Sus inconvenientes son:
+
+\begin{itemize}
+	\item Todos los subsistemas deben estar acordes con el modelo de depósito. Es difícil integrar nuevos subsistemas.
+	\item Es difícil evolucionar hacia otro modelo de datos.
+	\item Fuerza la política de seguridad, control de acceso y recuperación de los subsistemas.
+\end{itemize}
+
+\begin{itemize}
+	\item Se pueden diseñar subsistemas independientes, aunque deben conocer el esquema de los datos del repositorio.
+	\item Mejora la \textbf{cohesión} de los subsistemas.
+	\item El \textbf{acoplamiento} es alto, haciendo difíciles los cambios.
+\end{itemize}
+
+\newpage
+
+\paragraph{Arquitectura MVC\\}
+
+Consta de tres componentes, cada uno con un contenido determinado:
+
+\begin{itemize}
+	\item \textbf{Modelo}. Responsable del conocimiento del dominio de la aplicación.
+	\item \textbf{Vista}. Responsable de mostrar los objetos del dominio de aplicación al usuario.
+	\item \textbf{Controlador}. Responde a las acciones del usuario, invocando peticiones al modelo y a la vista.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{mvc.png}
+\caption{Arquitectura MVC.}
+\end{figure}
+
+\begin{itemize}
+	\item Cada subsistema puede diseñarse de forma \textbf{independiente}.
+	\item Se puede aumentar la \textbf{cohesión} si la vista y el controlador se encuentran unidos en una capa de interfaz de usuario.
+	\item Se reduce el \textbf{acoplamiento}.
+	\item La vista y el controlador hacen uso extensivo de componentes \textbf{reutilizables}.
+	\item Es \textbf{flexible}: se puede modificar la interfaz de usuario cambiando la vista, el controlador o ambos.
+	\item Se puede probar la aplicación separadamente de la interfaz de usuario.
+\end{itemize}
+
+\newpage
+
+\paragraph{Arquitectura MDA (\textit{Modern Driven Architecture}\\}
+
+Permite organizar y gestionar las arquitecturas empresariales. Está basado en herramientas automáticas para construir modelos independientes y transformarlos en implementaciones eficientes.\\
+
+Los modelos son:
+
+\begin{itemize}
+	\item \textbf{CIM} (\textit{Computation Independent Model}). Se encarga del modelado de negocio y requisitos.
+	\item \textbf{PIM} (\textit{Platform Independent Model}).
+		\begin{itemize}
+			\item Análisis y diseño independiente de la plataforma tecnológica.
+			\item El analista realiza el PIM que describe al sistema.
+			\item Un PIM se transforma en uno o varios PSM.
+		\end{itemize}
+		\item \textbf{PSM} (\textit{Platform Dependent Model}).
+			\begin{itemize}
+			\item Análisis y diseño dependiente de la plataforma tecnológica.
+			\item El arquitecto adapta el modelo para una implementación tecnológica específica.
+			\item Cada PSM se transforma en código.
+		\end{itemize}
+\end{itemize}
 
 \subsubsection{Actividades del diseño arquitectónico}
+
+Las actividades del diseño arquitectónico son:
+
+\begin{enumerate}
+	\item \textbf{Identificar objetivos}.
+	\item \textbf{Determinar y modelar la arquitectura software y los subsistemas}.
+	\item \textbf{Modelar la arquitectura software}.
+	\item \textbf{Refinar la descomposición en subsistemas}.
+\end{enumerate}
+
+\paragraph{Identificar objetivos\\}
+
+\begin{itemize}
+	\item Se identifican las cualidades deseables del sistema que determinarán el diseño del mismo.
+	\item Se obtienen a partir de los requisitos no funcionales o del dominio de la aplicación.
+	\item Se selecciona un pequeño conjunto de objetivos que el sistema deberá satisfacer necesariamente.
+	\item Se adquieren compromisos, ya que muchos objetivos de diseño son contrapuestos.
+\end{itemize}
+
+\paragraph{Determinar y modelar la arquitectura\\}
+
+Para \textbf{determinarla} hay que:
+
+\begin{itemize}
+	\item Seleccionar el estilo arquitectónico adecuado.
+	\item Identificar subsistemas.
+	\item Añadir subsistemas predefinidos por el estilo arquitectónico elegido.
+\end{itemize}
+
+Para \textbf{modelarla} hay que:
+
+\begin{itemize}
+	\item Diseñar la arquitectura en un diagrama de paquetes.
+	\item Elaborar el diagrama de componentes de la vista de arquitectura.
+	\item Realizar el diagrama de despliegue.
+\end{itemize}
+
+\paragraph{Modelar la arquitectura software\\}
+
+Para modelar se utilizan dos tipos de diagramas:
+
+\begin{itemize}
+	\item \textbf{Diagrama de paquetes}. Permite modelar una primera estructuración o partición del sistema en base a uno o más paquetes.
+	\item \textbf{Diagrama de componentes}. Permite estructurar el sistema en subsistemas en base a componentes que pueden reemplazarse.
+\end{itemize}
+
+\paragraph{Refinar la descomposición en subsistemas\\}
+
+Consiste en refinar los subsistemas hasta satisfacer los objetivos del diseño. Se establecen los siguientes aspectos genéricos:
+
+\begin{itemize}
+	\item Correspondencia hardware-software.
+	\item Administración de datos persistentes.
+	\item Especificación de una política de control de accesos.
+	\item Diseño del flujo de control.
+	\item Diseño de la concurrencia y sincronización.
+	\item Definición de las condiciones del entorno.
+\end{itemize}
 
 
 \end{document}
