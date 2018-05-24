@@ -1,0 +1,164 @@
+\documentclass[12pt,spanish]{article}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{array}
+\graphicspath{ {../img/}}
+\usepackage[table]{xcolor}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[ddmmyy]{datetime}
+\usepackage[a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\makeindex
+
+\begin{document}
+\begin{titlepage}
+
+\newlength{\centeroffset}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+\thispagestyle{empty}
+
+\noindent\hspace*{\centeroffset}\begin{minipage}{\textwidth}
+
+\centering
+\includegraphics[width=0.9\textwidth]{logo_ugr.jpg}\\[1.4cm]
+
+\textsc{ \Large Fundamentos de Ingeniería del Software\\[0.2cm]}
+\textsc{GRADO EN INGENIERÍA INFORMÁTICA}\\[1cm]
+
+{\Large\bfseries Práctica 4. Diseño\\
+}
+\noindent\rule[-1ex]{\textwidth}{3pt}\\[3.5ex]
+{\normalsize\bfseries Primera parte}
+\end{minipage}
+
+\vspace{2.5cm}
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+\centering
+
+\textbf{Autores}\\ {José Baena Cobos \\ José Miguel Pelegrina Pelegrina\\Carlos Sánchez Páez}\\[2.5ex]
+\includegraphics[width=0.3\textwidth]{etsiit_logo.png}\\[0.1cm]
+\vspace{1.5cm}
+\includegraphics[width=0.2\textwidth]{lsi.png}\\[0.1cm]
+\vspace{1cm}
+\textsc{Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación}\\
+\vspace{1cm}
+\textsc{Curso 2017-2018}
+\end{minipage}
+\end{titlepage}
+\tableofcontents
+\thispagestyle{empty}
+\listoffigures
+\newpage
+\setcounter{page}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%Comienzo del documento%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Diagrama de clases del diseño}
+
+\begin{figure}[H]
+\centering
+%\includegraphics[scale=0.75]{diseno.png}
+\caption{Diagrama de clases del diseño.}
+\end{figure}
+
+\section{José Miguel Pelegrina Pelegrina}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{aniadirParadaRutaPlantilla.png}
+\caption{Añadir parada ruta plantilla.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{cancelarRutaPlantilla.png}
+\caption{Cancelar ruta plantilla.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{generarRutaDiaria.png}
+\caption{Generar ruta diaria.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{incluirEnvioRuta.png}
+\caption{Incluir envío ruta.}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{modificarRutaPlantilla.png}
+\caption{Modificar ruta plantilla.}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{recogerEnvioCliente.png}
+\caption{Recoger envío cliente.}
+\end{figure}
+
+
+\section{José Baena Cobos}
+
+
+
+\section{Carlos Sánchez Páez}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{enviarEnvio.png}
+\caption{Enviar envío.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{pedirDatosEnvio.png}
+\caption{Pedir datos envío.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{pedirPresupuesto.png}
+\caption{Pedir presupuesto.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{recibirEnvioEnDomicilio.png}
+\caption{Recibir envío en domicilio.}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{recibirEnvioEnOficina.png}
+\caption{Recibir envío en oficina.}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{recogerEnvioCliente.png}
+\caption{Recoger envío cliente.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{registrarPago.png}
+\caption{Registrar pago.}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%Fin del documento%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
